@@ -22,5 +22,29 @@ public class Ciudad implements Serializable {
     private String Nombre;
     @OneToOne
     private Pais pais;
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public Ciudad(String Nombre, Pais pais) {
+        this.Nombre = Nombre;
+        this.pais = pais;
+    }
+
+    public Ciudad() {
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
     
 }

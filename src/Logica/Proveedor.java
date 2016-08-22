@@ -17,7 +17,27 @@ import javax.persistence.Id;
  */
 @Entity
 public class Proveedor extends Usuario implements Serializable {
+    private String nombreEmp;
+    private String link;
+    public Dt_prov DatosProveedor(){
+    }   
+    public void setnombreEmp(String nombre){
+    this.nombreEmp = nombre;
+    }
 
-    
+    public Proveedor(String nombreEmp, String link) {
+        this.nombreEmp = nombreEmp;
+        this.link = link;
+    }
+    public void setlink(String link){
+    this.link = link;
+    }
+    public String getnombreEmp(){
+    return this.nombreEmp;
+    }
+    public String getlink(){
+    return this.link;
+    }
+    public Proveedor(){}
     
 }

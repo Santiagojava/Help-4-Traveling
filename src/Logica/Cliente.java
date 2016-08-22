@@ -6,11 +6,13 @@
 package Logica;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -18,8 +20,17 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Cliente extends Usuario implements Serializable {
-    @ManyToOne
-    private Reserva reservas;
+
+    public Collection<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Reserva reservas) {
+        this.reservas.add( reservas);
+    }
+    
+    @OneToMany
+    private Collection <Reserva> reservas;
     public Dt_cliente getInfoCliente(){
     Dt_cliente ret= null;
     return ret;

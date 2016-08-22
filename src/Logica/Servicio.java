@@ -6,12 +6,15 @@
 package Logica;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import static org.eclipse.persistence.expressions.ExpressionOperator.any;
 
 /**
  *
@@ -19,46 +22,87 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Servicio implements Serializable {
+@Id
+    private String nombre;
+    private String descripcion;
+    private float precio;
+    private Imagen imagen[];
+    @OneToMany
+    private Collection <Categoria> categorias;
+    @OneToOne
+    private Proveedor proveedores;
+    @OneToOne
+    private Ciudad ciudad;
+    public void ModificarServicio(Dt_servicio serv){}
+    public Dt_servicio VerInfoServicio(){}
 
-    @OneToMany(mappedBy = "servicios")
-    private List<Categoria> categorias;
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    public Long getId() {
-        return id;
+    public Servicio(String nombre, String descripcion, float precio, Imagen[] imagen, Collection<Categoria> categorias, Proveedor proveedores, Ciudad ciudad) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.imagen = imagen;
+        this.categorias = categorias;
+        this.proveedores = proveedores;
+        this.ciudad = ciudad;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+    public String getNombre() {
+        return nombre;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Servicio)) {
-            return false;
-        }
-        Servicio other = (Servicio) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    @Override
-    public String toString() {
-        return "Logica.Servicio[ id=" + id + " ]";
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public Imagen[] getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen[] imagen) {
+        this.imagen = imagen;
+    }
+
+    public Collection<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Collection<Categoria> categorias) {
+        this.categorias = categorias;
+    }
+
+    public Proveedor getProveedores() {
+        return proveedores;
+    }
+
+    public void setProveedores(Proveedor proveedores) {
+        this.proveedores = proveedores;
+    }
+
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+    
     
 }

@@ -5,11 +5,15 @@
  */
 package Logica;
 
+import static Logica.Estado.CANCELADA;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -17,43 +21,87 @@ import javax.persistence.Id;
  */
 @Entity
 public class Reserva implements Serializable {
-
-    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int clave;
+    @OneToOne
+    private Date fechaCreado;
+    private float precio;
+    private Estado estado;
+    @OneToOne
+    private Cliente cliente;
+    @OneToMany
+    private Collection <IntoReserva> res_prom;// coleccion de intoreservas que contienen servicios y promociones.
 
-    public Long getId() {
-        return id;
+    public Reserva() {
+    }
+    public void IngresarDatosPromocion(int cant, Date fechaIni, Date fechafin){}
+    public void ActualizarEstadoReserva(Estado estado){
+    this.setEstado(estado);
+    }
+    public void IngresarDatosServicio(int cant, Date fechaIni, Date fechafin){}
+    public void CancelaReserva(){
+        Estado est = CANCELADA;
+    this.setEstado(est);
+    }
+    public Dt_reserva VerInfoReserva(){}
+
+    public int getClave() {
+        return clave;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setClave(int clave) {
+        this.clave = clave;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public Date getFechaCreado() {
+        return fechaCreado;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Reserva)) {
-            return false;
-        }
-        Reserva other = (Reserva) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setFechaCreado(Date fechaCreado) {
+        this.fechaCreado = fechaCreado;
     }
 
-    @Override
-    public String toString() {
-        return "Logica.Reserva[ id=" + id + " ]";
+    public float getPrecio() {
+        return precio;
     }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Reserva(int clave, Date fechaCreado, float precio, Estado estado, Cliente cliente, Collection<IntoReserva> res_prom) {
+        this.clave = clave;
+        this.fechaCreado = fechaCreado;
+        this.precio = precio;
+        this.estado = estado;
+        this.cliente = cliente;
+        this.res_prom = res_prom;
+    }
+
+    public Collection<IntoReserva> getRes_prom() {
+        return res_prom;
+    }
+
+    public void setRes_prom(Collection<IntoReserva> res_prom) {
+        this.res_prom = res_prom;
+    }
+
+    
     
 }

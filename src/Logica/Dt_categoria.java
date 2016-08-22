@@ -5,12 +5,38 @@
  */
 package Logica;
 
+import java.util.Collection;
+
 /**
  *
  * @author Lucas.Groba
  */
 public class Dt_categoria {
     public String nombre;
-    public Dt_categoria categorias;
-    public Dt_servicio servicios;
+    public Collection <Dt_categoria> categorias;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Collection<Dt_categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Dt_categoria categorias) {
+        this.categorias.add(categorias);
+    }
+
+    public Collection<Dt_servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(Collection<Dt_servicio> servicios) {
+        this.servicios = servicios;
+    }
+    public Collection <Dt_servicio> servicios;
 }

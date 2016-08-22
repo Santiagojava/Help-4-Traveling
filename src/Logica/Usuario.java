@@ -22,29 +22,44 @@ public class Usuario implements Serializable {
     private String apellido;
     private String email;
 //    private Imagen imagen;
-    public void setnick(String nick){
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
         this.nick = nick;
     }
-    public void setnombre(String nombre){
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public void setapellido(String apellido){
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    public void setemail(String email){
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
-    public String getnick(){
-        return this.nick;
-    }
-    public String getnombre(){
-        return this.nombre;
-    }
-    public String getapellido(){
-        return this.apellido;
-    }
-    public String getemail(){
-        return this.email;
+  
+    public Usuario(String nick, String nombre, String apellido, String email) {
+        this.nick = nick;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
     }
     public Usuario(){}
     

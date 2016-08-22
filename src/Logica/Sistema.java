@@ -21,16 +21,16 @@ public static  class Sistema implements Serializable {
 
     @Id
     private Long id;
-    @ManyToOne
-    private Categoria categorias;
-    @ManyToOne
-    private Reserva reservas;
-    @ManyToOne
-    private Usuario usuarios;
-    @ManyToOne
-    private Servicio servicios;
-    @ManyToOne
-    private Promocion promociones;
+    @OneToMany
+    private Collection <Categoria> categorias;
+    @OneToMany
+    private Collection <Reserva> reservas;
+    @OneToMany
+    private Collection <Usuario> usuarios;
+    @OneToMany
+    private Collection <Servicio> servicios;
+    @OneToMany
+    private COllection <Promocion> promociones;
     
     public void ActualizarEstadoReserva(int res,enum Estado){}
     public void AltaPromocion(Dt_promo promo){}
