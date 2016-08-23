@@ -29,47 +29,10 @@ public class JPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jFileChooser1 = new javax.swing.JFileChooser();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jInternalFrame3 = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jTextField16 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jFileChooser2 = new javax.swing.JFileChooser();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -95,179 +58,21 @@ public class JPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jInternalFrame2.setVisible(true);
-        jInternalFrame2.getContentPane().setLayout(null);
+        jButton1.setText("ADMINISTRADOR");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(120, 40, 120, 23);
 
-        jLabel2.setText("Nombre:");
-        jInternalFrame2.getContentPane().add(jLabel2);
-        jLabel2.setBounds(140, 70, 41, 14);
+        jButton2.setText("CLIENTE");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(120, 80, 120, 23);
 
-        jLabel3.setText("Apellido:");
-        jInternalFrame2.getContentPane().add(jLabel3);
-        jLabel3.setBounds(140, 110, 41, 14);
+        jButton3.setText("PROVEEDOR");
+        getContentPane().add(jButton3);
+        jButton3.setBounds(120, 120, 120, 23);
 
-        jLabel4.setText("Email:");
-        jInternalFrame2.getContentPane().add(jLabel4);
-        jLabel4.setBounds(140, 150, 28, 14);
-
-        jLabel5.setText("Fecha de nacimiento:");
-        jInternalFrame2.getContentPane().add(jLabel5);
-        jLabel5.setBounds(90, 200, 102, 14);
-
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
-            }
-        });
-        jInternalFrame2.getContentPane().add(jFileChooser1);
-        jFileChooser1.setBounds(10, 400, 499, 300);
-
-        jLabel6.setText("Imagen:");
-        jInternalFrame2.getContentPane().add(jLabel6);
-        jLabel6.setBounds(70, 380, 40, 14);
-        jInternalFrame2.getContentPane().add(jTextField2);
-        jTextField2.setBounds(220, 70, 84, 20);
-        jInternalFrame2.getContentPane().add(jTextField3);
-        jTextField3.setBounds(220, 110, 84, 20);
-        jInternalFrame2.getContentPane().add(jTextField4);
-        jTextField4.setBounds(220, 150, 84, 20);
-
-        jLabel7.setText("DIA");
-        jInternalFrame2.getContentPane().add(jLabel7);
-        jLabel7.setBounds(210, 200, 18, 14);
-
-        jLabel8.setText("MES");
-        jInternalFrame2.getContentPane().add(jLabel8);
-        jLabel8.setBounds(250, 200, 20, 14);
-
-        jLabel9.setText("AÑO");
-        jInternalFrame2.getContentPane().add(jLabel9);
-        jLabel9.setBounds(300, 200, 22, 14);
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        jInternalFrame2.getContentPane().add(jTextField5);
-        jTextField5.setBounds(200, 230, 29, 20);
-
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        jInternalFrame2.getContentPane().add(jTextField6);
-        jTextField6.setBounds(250, 230, 28, 20);
-        jInternalFrame2.getContentPane().add(jTextField7);
-        jTextField7.setBounds(300, 230, 35, 20);
-
-        jLabel10.setText("Empresa:");
-        jInternalFrame2.getContentPane().add(jLabel10);
-        jLabel10.setBounds(130, 270, 45, 14);
-
-        jLabel11.setText("Nombre:");
-        jInternalFrame2.getContentPane().add(jLabel11);
-        jLabel11.setBounds(150, 300, 41, 14);
-
-        jLabel12.setText("Link:");
-        jInternalFrame2.getContentPane().add(jLabel12);
-        jLabel12.setBounds(150, 330, 22, 14);
-
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
-        jInternalFrame2.getContentPane().add(jTextField8);
-        jTextField8.setBounds(210, 300, 114, 20);
-        jInternalFrame2.getContentPane().add(jTextField9);
-        jTextField9.setBounds(210, 330, 114, 20);
-
-        jLabel13.setText("Nickname:");
-        jInternalFrame2.getContentPane().add(jLabel13);
-        jLabel13.setBounds(140, 30, 49, 14);
-        jInternalFrame2.getContentPane().add(jTextField10);
-        jTextField10.setBounds(220, 30, 84, 20);
-
-        getContentPane().add(jInternalFrame2);
-        jInternalFrame2.setBounds(80, 50, 540, 730);
-
-        jInternalFrame3.setVisible(true);
-        jInternalFrame3.getContentPane().setLayout(null);
-
-        jLabel1.setText("Nickname:");
-        jInternalFrame3.getContentPane().add(jLabel1);
-        jLabel1.setBounds(140, 40, 49, 14);
-        jInternalFrame3.getContentPane().add(jTextField1);
-        jTextField1.setBounds(220, 40, 84, 20);
-
-        jLabel14.setText("Nombre:");
-        jInternalFrame3.getContentPane().add(jLabel14);
-        jLabel14.setBounds(140, 80, 41, 14);
-        jInternalFrame3.getContentPane().add(jTextField11);
-        jTextField11.setBounds(220, 80, 84, 20);
-        jInternalFrame3.getContentPane().add(jTextField12);
-        jTextField12.setBounds(220, 120, 84, 20);
-
-        jLabel15.setText("Apellido:");
-        jInternalFrame3.getContentPane().add(jLabel15);
-        jLabel15.setBounds(140, 120, 41, 14);
-
-        jLabel16.setText("Email:");
-        jInternalFrame3.getContentPane().add(jLabel16);
-        jLabel16.setBounds(140, 160, 28, 14);
-        jInternalFrame3.getContentPane().add(jTextField13);
-        jTextField13.setBounds(220, 160, 84, 20);
-
-        jLabel17.setText("DIA");
-        jInternalFrame3.getContentPane().add(jLabel17);
-        jLabel17.setBounds(180, 220, 18, 14);
-
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
-            }
-        });
-        jInternalFrame3.getContentPane().add(jTextField14);
-        jTextField14.setBounds(180, 250, 29, 20);
-
-        jTextField15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField15ActionPerformed(evt);
-            }
-        });
-        jInternalFrame3.getContentPane().add(jTextField15);
-        jTextField15.setBounds(230, 250, 28, 20);
-
-        jLabel18.setText("MES");
-        jInternalFrame3.getContentPane().add(jLabel18);
-        jLabel18.setBounds(230, 220, 20, 14);
-
-        jLabel19.setText("AÑO");
-        jInternalFrame3.getContentPane().add(jLabel19);
-        jLabel19.setBounds(280, 220, 22, 14);
-        jInternalFrame3.getContentPane().add(jTextField16);
-        jTextField16.setBounds(280, 250, 35, 20);
-
-        jLabel20.setText("Fecha de nacimiento:");
-        jInternalFrame3.getContentPane().add(jLabel20);
-        jLabel20.setBounds(30, 220, 102, 14);
-
-        jLabel21.setText("Imagen:");
-        jInternalFrame3.getContentPane().add(jLabel21);
-        jLabel21.setBounds(140, 310, 40, 14);
-
-        jFileChooser2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser2ActionPerformed(evt);
-            }
-        });
-        jInternalFrame3.getContentPane().add(jFileChooser2);
-        jFileChooser2.setBounds(10, 340, 499, 300);
-
-        getContentPane().add(jInternalFrame3);
-        jInternalFrame3.setBounds(30, 80, 535, 670);
+        jButton4.setText("SALIR");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(120, 160, 120, 23);
 
         jMenu1.setText("Cliente");
         jMenuBar1.add(jMenu1);
@@ -294,34 +99,6 @@ public class JPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
-
-    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField15ActionPerformed
-
-    private void jFileChooser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFileChooser2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,32 +136,11 @@ public class JPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFileChooser jFileChooser1;
-    private javax.swing.JFileChooser jFileChooser2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JInternalFrame jInternalFrame3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -393,21 +149,5 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
