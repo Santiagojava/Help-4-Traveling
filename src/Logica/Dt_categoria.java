@@ -6,6 +6,7 @@
 package Logica;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 /**
  *
@@ -13,8 +14,8 @@ import java.util.Collection;
  */
 public class Dt_categoria {
     public String nombre;
-    public Collection <Dt_categoria> categorias;
-
+    public HashMap <String,Dt_categoria> categorias;
+    public HashMap <String, Dt_servicio> servicios;
     public String getNombre() {
         return nombre;
     }
@@ -23,20 +24,24 @@ public class Dt_categoria {
         this.nombre = nombre;
     }
 
-    public Collection<Dt_categoria> getCategorias() {
+    public HashMap<String, Dt_categoria> getCategorias() {
         return categorias;
     }
 
-    public void setCategorias(Dt_categoria categorias) {
-        this.categorias.add(categorias);
+    public void setCategorias(HashMap<String, Dt_categoria> categorias) {
+        this.categorias = categorias;
     }
 
-    public Collection<Dt_servicio> getServicios() {
+    public HashMap<String, Dt_servicio> getServicios() {
         return servicios;
     }
 
-    public void setServicios(Collection<Dt_servicio> servicios) {
+    public void setServicios(HashMap<String, Dt_servicio> servicios) {
         this.servicios = servicios;
     }
-    public Collection <Dt_servicio> servicios;
+
+  
+
+  
+    
 }

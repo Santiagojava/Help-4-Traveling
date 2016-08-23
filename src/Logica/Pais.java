@@ -7,6 +7,7 @@ package Logica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,5 +24,28 @@ public class Pais implements Serializable {
 
     private @Id String Nombre;
     @OneToMany
-    private Collection <Ciudad> ciudades;
+    private HashMap <String, Ciudad> ciudades;
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public HashMap<String, Ciudad> getCiudades() {
+        return ciudades;
+    }
+
+    public void setCiudades(HashMap<String, Ciudad> ciudades) {
+        this.ciudades = ciudades;
+    }
+
+    public Pais() {
+    }
+
+    public Pais(String Nombre) {
+        this.Nombre = Nombre;
+    }
 }

@@ -7,6 +7,7 @@ package Logica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,10 +25,10 @@ public class Promocion implements Serializable {
     private float descuento;
     private float precion ;
     @OneToMany
-    private Collection <Servicio> servicios;
+    private HashMap <String, Servicio> servicios;
     public void VerInfoPromocion(){}
 
-    public Promocion(String nombre, float descuento, float precion, Collection<Servicio> servicios) {
+    public Promocion(String nombre, float descuento, float precion, HashMap <String, Servicio> servicios) {
         this.nombre = nombre;
         this.descuento = descuento;
         this.precion = precion;
@@ -58,13 +59,15 @@ public class Promocion implements Serializable {
         this.precion = precion;
     }
 
-    public Collection<Servicio> getServicios() {
+    public HashMap<String, Servicio> getServicios() {
         return servicios;
     }
 
-    public void setServicios(Collection<Servicio> servicios) {
+    public void setServicios(HashMap<String, Servicio> servicios) {
         this.servicios = servicios;
     }
+
+
 
     public Promocion() {
     }

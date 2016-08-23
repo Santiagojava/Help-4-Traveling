@@ -7,6 +7,7 @@ package Logica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,19 +22,21 @@ import javax.persistence.OneToMany;
 @Entity
 public class Cliente extends Usuario implements Serializable {
 
-    public Collection<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(Reserva reservas) {
-        this.reservas.add( reservas);
-    }
+   
     
     @OneToMany
-    private Collection <Reserva> reservas;
+    private HashMap <Integer,Reserva> reservas;
     public Dt_cliente getInfoCliente(){
     Dt_cliente ret= null;
     return ret;
+    }
+
+    public HashMap<Integer, Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(HashMap<Integer, Reserva> reservas) {
+        this.reservas = reservas;
     }
     
 }

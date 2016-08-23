@@ -6,6 +6,7 @@
 package Logica;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Dt_cliente {
     private String apellido;
     private String email;
     private Imagen imagen ;
-    private Collection < Dt_reserva> reservas;
+    private HashMap < Integer,Dt_reserva> reservas;
 
     public String getNick() {
         return nick;
@@ -54,19 +55,15 @@ public class Dt_cliente {
     public Imagen getImagen() {
         return imagen;
     }
-
-    public Collection<Dt_reserva> getReservas() {
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
+    }
+    public HashMap<Integer, Dt_reserva> getReservas() {
         return reservas;
     }
 
-    public void setReservas(Collection<Dt_reserva> reservas) {
+    public void setReservas(HashMap<Integer, Dt_reserva> reservas) {
         this.reservas = reservas;
-    }
-
-  
-
-    public void setImagen(Imagen imagen) {
-        this.imagen = imagen;
     }
 }
 

@@ -21,14 +21,6 @@ public class IntoReserva  implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int cod;
     private int cantidad;
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
     @OneToOne
     private Date FechaInicio;
     @OneToOne
@@ -37,7 +29,15 @@ public class IntoReserva  implements Serializable {
     private Promocion promocion;
     @OneToOne 
     private Servicio servicio;
+    
+    
+    public int getCantidad() {
+        return cantidad;
+    }
 
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
     public int getCod() {
         return cod;
     }

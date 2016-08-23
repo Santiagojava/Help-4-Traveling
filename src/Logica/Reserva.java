@@ -6,14 +6,17 @@
 package Logica;
 
 import static Logica.Estado.CANCELADA;
+import static Logica.Estado.REGISTRADA;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,13 +33,16 @@ public class Reserva implements Serializable {
     @OneToOne
     private Cliente cliente;
     @OneToMany
-    private Collection <IntoReserva> res_prom;// coleccion de intoreservas que contienen servicios y promociones.
+    private HashMap <Integer,IntoReserva> res_prom;// coleccion de intoreservas que contienen servicios y promociones.
 
     public Reserva() {
     }
     public void IngresarDatosPromocion(int cant, Date fechaIni, Date fechafin){}
     public void ActualizarEstadoReserva(Estado estado){
-    this.setEstado(estado);
+        if(this.estado == REGISTRADA)
+            this.setEstado(estado);
+        else
+            JOptionPane.showInputDialog("El estado actual de la Reserva es distinto de REGISTRADA, Imposible modificar Estado");
     }
     public void IngresarDatosServicio(int cant, Date fechaIni, Date fechafin){}
     public void CancelaReserva(){
@@ -85,7 +91,7 @@ public class Reserva implements Serializable {
         this.cliente = cliente;
     }
 
-    public Reserva(int clave, Date fechaCreado, float precio, Estado estado, Cliente cliente, Collection<IntoReserva> res_prom) {
+    public Reserva(int clave, Date fechaCreado, float precio, Estado estado, Cliente cliente, HashMap<Integer, IntoReserva> res_prom) {
         this.clave = clave;
         this.fechaCreado = fechaCreado;
         this.precio = precio;
@@ -94,14 +100,23 @@ public class Reserva implements Serializable {
         this.res_prom = res_prom;
     }
 
-    public Collection<IntoReserva> getRes_prom() {
+    public Reserva(int clave, Date fechaCreado, float precio, Estado estado, Cliente cliente) {
+        this.clave = clave;
+        this.fechaCreado = fechaCreado;
+        this.precio = precio;
+        this.estado = estado;
+        this.cliente = cliente;
+    }
+
+    public HashMap<Integer, IntoReserva> getRes_prom() {
         return res_prom;
     }
 
-    public void setRes_prom(Collection<IntoReserva> res_prom) {
+    public void setRes_prom(HashMap<Integer, IntoReserva> res_prom) {
         this.res_prom = res_prom;
     }
 
+    
     
     
 }

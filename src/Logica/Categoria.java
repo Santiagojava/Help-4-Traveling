@@ -7,6 +7,7 @@ package Logica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,9 +24,9 @@ public class Categoria implements Serializable {
 
    @Id private String nombre;
     @OneToMany
-   private Collection <Servicio> servicios;
+   private HashMap <Integer,Servicio> servicios;
     @OneToMany
-   private  Collection <Categoria> categorias;
+   private  HashMap <String, Categoria> categorias;
    public Categoria(){}
    public void setnombre(String nombre){
         this.nombre = nombre;
@@ -47,21 +48,23 @@ public class Categoria implements Serializable {
         this.nombre = nombre;
     }
 
-    public Collection<Servicio> getServicios() {
+    public HashMap<Integer, Servicio> getServicios() {
         return servicios;
     }
 
-    public void setServicios(Collection<Servicio> servicios) {
+    public void setServicios(HashMap<Integer, Servicio> servicios) {
         this.servicios = servicios;
     }
 
-    public Collection<Categoria> getCategorias() {
+    public HashMap<String, Categoria> getCategorias() {
         return categorias;
     }
 
-    public void setCategorias(Collection<Categoria> categorias) {
+    public void setCategorias(HashMap<String, Categoria> categorias) {
         this.categorias = categorias;
     }
+
+ 
    
    
     
