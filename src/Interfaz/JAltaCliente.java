@@ -60,11 +60,11 @@ public class JAltaCliente extends javax.swing.JInternalFrame {
 
         jButton2.setText("ACEPTAR");
         getContentPane().add(jButton2);
-        jButton2.setBounds(100, 270, 79, 23);
+        jButton2.setBounds(100, 240, 79, 23);
 
         jButton3.setText("CANCELAR");
         getContentPane().add(jButton3);
-        jButton3.setBounds(210, 270, 85, 23);
+        jButton3.setBounds(200, 240, 85, 23);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(jComboBox2);

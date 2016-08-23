@@ -33,14 +33,6 @@ public class JPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
 
         jInternalFrame1.setVisible(true);
 
@@ -73,29 +65,6 @@ public class JPrincipal extends javax.swing.JFrame {
         jButton4.setText("SALIR");
         getContentPane().add(jButton4);
         jButton4.setBounds(120, 160, 120, 23);
-
-        jMenu1.setText("Cliente");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Proveedor");
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Reserva");
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Servicio");
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Promocion");
-        jMenuBar1.add(jMenu5);
-
-        jMenu6.setText("Usuario");
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setText("Categoria");
-        jMenuBar1.add(jMenu7);
-
-        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,13 +110,5 @@ public class JPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
