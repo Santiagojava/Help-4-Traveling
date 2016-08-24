@@ -46,6 +46,9 @@ public class JAltaCliente extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setTitle("Alta de Cliente");
         getContentPane().setLayout(null);
@@ -60,11 +63,11 @@ public class JAltaCliente extends javax.swing.JInternalFrame {
 
         jButton2.setText("ACEPTAR");
         getContentPane().add(jButton2);
-        jButton2.setBounds(100, 240, 79, 23);
+        jButton2.setBounds(100, 310, 79, 23);
 
         jButton3.setText("CANCELAR");
         getContentPane().add(jButton3);
-        jButton3.setBounds(200, 240, 85, 23);
+        jButton3.setBounds(200, 310, 85, 23);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         getContentPane().add(jComboBox2);
@@ -118,6 +121,16 @@ public class JAltaCliente extends javax.swing.JInternalFrame {
         getContentPane().add(jComboBox3);
         jComboBox3.setBounds(250, 190, 56, 20);
 
+        jLabel10.setText("Imagen:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(90, 230, 40, 14);
+
+        jButton4.setText("Examinar");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(170, 260, 80, 23);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(160, 230, 110, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -126,9 +139,11 @@ public class JAltaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -138,6 +153,7 @@ public class JAltaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

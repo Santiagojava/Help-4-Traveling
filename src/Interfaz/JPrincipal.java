@@ -15,7 +15,6 @@ public class JPrincipal extends javax.swing.JFrame {
      * Creates new form JPrincipal
      */
     public JPrincipal() {
-        jInternalFrame2.setVisible(false);
         initComponents();
     }
 

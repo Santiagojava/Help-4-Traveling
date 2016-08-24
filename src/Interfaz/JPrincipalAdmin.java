@@ -9,12 +9,12 @@ package Interfaz;
  *
  * @author joaquin
  */
-public class principal_administrador extends javax.swing.JFrame {
+public class JPrincipalAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form principal_administrador
      */
-    public principal_administrador() {
+    public JPrincipalAdmin() {
         initComponents();
     }
 
@@ -163,7 +163,7 @@ public class principal_administrador extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        principal_administrador ventana = new principal_administrador();
+        JPrincipalAdmin ventana = new JPrincipalAdmin();
         ventana.setTitle("Help 4 Traveling");
         ventana.setVisible(true);
     }
