@@ -26,7 +26,7 @@ public class Categoria implements Serializable {
 
    @Id private String nombre;
     @ManyToMany(mappedBy = "categorias")
-   private HashMap <Integer,Servicio> servicios;
+   private HashMap <String ,Servicio> servicios;
     @OneToMany 
     @JoinColumn(name = "nombre")
    private  HashMap <String, Categoria> categorias;
@@ -35,12 +35,17 @@ public class Categoria implements Serializable {
         this.nombre = nombre;
    }
    public void setcategoria(Categoria categoria){}
-   public void setservicio(Servicio servicio){}
+  
    public String getnombre(){
         return this.nombre;
    }
-     public void altaCategoria(String nombre){}
-   public Dt_servicio verInfoServicio(String nombreserv){}
+    public void altaCategoria(String nombre){
+    }
+    
+    
+    public Dt_servicio verInfoServicio(String nombreserv){
+    return servicios.get(nombreserv).VerInfoServicio();
+    }
 
     public String getNombre() {
         return nombre;
@@ -50,22 +55,22 @@ public class Categoria implements Serializable {
         this.nombre = nombre;
     }
 
-    public HashMap<Integer, Servicio> getServicios() {
+    public HashMap<String , Servicio> getServicios() {
         return servicios;
     }
 
     public void setServicios(Servicio serv) {
-        this.servicios.put(serv.getCodigo(), serv);
+        this.servicios.put(serv.getNombre(), serv);
     }
 
     public HashMap<String, Categoria> getCategorias() {
         return categorias;
     }
 
-    public void setCategorias(HashMap<String, Categoria> categorias) {
-        this.categorias = categorias;
+    public void setCategorias(Categoria cat) {
+        this.categorias.put(cat.getNombre(), cat);
     }
-
+    
  
    
    

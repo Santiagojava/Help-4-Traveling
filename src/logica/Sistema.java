@@ -55,6 +55,9 @@ import javax.persistence.OneToMany;
     this.reservas.get(res).ActualizarEstadoReserva(estadoRes);
     }
     public void AltaPromocion(Dt_promo promo){}
+    public Dt_servicio VerInfoServicio(String cat, String ser){
+    return categorias.get(cat).verInfoServicio(ser);
+    }
     public void AltaServicio(Dt_servicio serv){
         Servicio ser = new Servicio();
         ser.setNombre(serv.getNombre());
@@ -64,7 +67,6 @@ import javax.persistence.OneToMany;
         ser.setDescripcion(serv.getDescripcion());
         ser.setImagen(serv.getImagen());
         ser.setPrecio(serv.getPrecio());
-        HashMap <String, Categoria > cat = new HashMap();
         Iterator it = serv.getCategorias().entrySet().iterator();
         while(it.hasNext()){
             Map.Entry c =(Map.Entry) it.next();
@@ -75,7 +77,7 @@ import javax.persistence.OneToMany;
         while(iter.hasNext()){
             Map.Entry c =(Map.Entry) iter.next();
             Categoria value = (Categoria)c.getValue();
-            value.setservicio(ser);
+            value.setServicios(ser);
         }
         
     }

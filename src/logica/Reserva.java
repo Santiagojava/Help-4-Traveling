@@ -52,7 +52,7 @@ public class Reserva implements Serializable {
         Estado est = CANCELADA;
     this.setEstado(est);
     }
-    public Dt_reserva VerInfoReserva(){}
+    //public Dt_reserva VerInfoReserva(){}
 
     public int getCod() {
         return cod;

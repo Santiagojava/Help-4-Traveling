@@ -25,7 +25,7 @@ public class Proveedor extends Usuario implements Serializable {
     @OneToMany
     @JoinColumn(name = "nombre")
     private HashMap <String, Servicio> servicios;
-    public Dt_prov DatosProveedor(){}   
+    //public Dt_prov DatosProveedor(){}   
 
     public String getNombreEmp() {
         return nombreEmp;

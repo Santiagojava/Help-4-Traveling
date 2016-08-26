@@ -22,37 +22,42 @@ import static org.eclipse.persistence.expressions.ExpressionOperator.any;
  */
 @Entity
 public class Servicio implements Serializable {
-@Id
-    private int codigo;
-
-    
-    private String nombre;
+@Id private String nombre;
     private String descripcion;
     private float precio;
     private Imagen imagen[];
-    @OneToMany
-    @JoinColumn(name = "fk_categorias")
+@OneToMany
+@JoinColumn(name = "fk_categorias")
     private HashMap <String,Categoria> categorias;
-    @OneToOne
-    @JoinColumn(name = "fk_proveedor")
+@OneToOne
+@JoinColumn(name = "fk_proveedor")
     private Proveedor proveedor;
-    @OneToOne
-    @JoinColumn(name = "fk_ciudad_o")
+@OneToOne
+@JoinColumn(name = "fk_ciudad_o")
     private Ciudad ciudad_o;
-    @OneToOne
-    @JoinColumn(name = "fk_ciudad_d")
+@OneToOne
+@JoinColumn(name = "fk_ciudad_d")
     private Ciudad ciudad_d;
     public void ModificarServicio(Dt_servicio serv){}
-    public Dt_servicio VerInfoServicio(){}
-
+    public Dt_servicio VerInfoServicio(){
+        Dt_servicio nuevo = new Dt_servicio();
+        nuevo.setNombre(this.getNombre());
+        nuevo.setDescripcion(this.getDescripcion());
+        nuevo.setNombre_prov(this.getProveedor().getNombre());
+        Dt_lugar origen = new Dt_lugar();
+        Dt_lugar destino = new Dt_lugar();
+        origen.setCiudad(this.getCiudad_o().getNombre());
+        origen.setPais(this.getCiudad_o().getPais().getNombre());
+        nuevo.setCiudad_pais_o(origen);
+        destino.setCiudad(this.getCiudad_d().getNombre());
+        destino.setPais(this.getCiudad_d().getPais().getNombre());
+        nuevo.setCiudad_pais_d(destino);
+        nuevo.setPrecio(this.getPrecio());
+        nuevo.setImagen(this.getImagen());
+        return nuevo;
     
-    public int getCodigo() {
-        return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
 
     public String getNombre() {
         return nombre;
