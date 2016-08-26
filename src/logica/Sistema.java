@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,11 +37,8 @@ import javax.persistence.OneToMany;
     @JoinColumn(name = "fk_reservas")
     private  HashMap <Integer,Reserva> reservas;
     @OneToMany
-    @JoinColumn(name = "fk_proveedores")
-    private HashMap <String,Proveedor> proveedores;
-    @OneToMany
-    @JoinColumn(name = "fk_clientes")
-    private HashMap <String,Cliente> clientes;
+    @JoinColumn(name = "fk_usuarios")
+    private HashMap <String,Usuario> usuarios;
     @OneToMany
     @JoinColumn(name = "fk_servicios")
     private HashMap <Integer,Servicio> servicios;
@@ -62,8 +60,13 @@ import javax.persistence.OneToMany;
         Servicio ser = new Servicio();
         ser.setNombre(serv.getNombre());
         ser.setCiudad_o(ciudades.get(serv.getCiudad_pais_o().getCiudad()));
+        if(ser.getCiudad_d()== null)
+            JOptionPane.showInputDialog("La Ciudad de Origen espesificada no existe");
         ser.setCiudad_d(ciudades.get(serv.getCiudad_pais_d().getCiudad()));
-        ser.setProveedor(proveedores.get(serv.getNombre_prov()));
+        Proveedor pro = (Proveedor)usuarios.get(serv.getNombre_prov());
+        if(pro == null)
+            JOptionPane.showInputDialog("El proveedor indicado no exixte");
+        ser.setProveedor(pro);
         ser.setDescripcion(serv.getDescripcion());
         ser.setImagen(serv.getImagen());
         ser.setPrecio(serv.getPrecio());
@@ -71,6 +74,8 @@ import javax.persistence.OneToMany;
         while(it.hasNext()){
             Map.Entry c =(Map.Entry) it.next();
             Dt_categoria value = (Dt_categoria)c.getValue();
+            if(categorias.get(value.getNombre())== null)
+                JOptionPane.showInputDialog("La Categoria especificada no existe");
             ser.setCategorias(categorias.get(value.getNombre()));
         }
         Iterator iter = ser.getCategorias().entrySet().iterator();
@@ -80,6 +85,14 @@ import javax.persistence.OneToMany;
             value.setServicios(ser);
         }
         
+    }
+
+    public HashMap<String, Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios( Usuario usuarios) {
+        this.usuarios.put(usuarios.getNick(), usuarios);
     }
     
 
@@ -107,21 +120,7 @@ import javax.persistence.OneToMany;
         this.reservas = reservas;
     }
 
-    public HashMap<String, Proveedor> getProveedores() {
-        return proveedores;
-    }
 
-    public void setProveedores(HashMap<String, Proveedor> proveedores) {
-        this.proveedores = proveedores;
-    }
-
-    public HashMap<String, Cliente> getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(HashMap<String, Cliente> clientes) {
-        this.clientes = clientes;
-    }
 
     public HashMap<String, Ciudad> getCiudades() {
         return ciudades;
