@@ -34,49 +34,149 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jTextField1 = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setTitle("Realizar Reserva");
         getContentPane().setLayout(null);
 
         jLabel1.setText("Precio Total:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 28, 60, 14);
+        jLabel1.setBounds(20, 30, 60, 14);
 
         jLabel2.setText("Cliente:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 60, 50, 14);
 
-        jLabel3.setText("Servicio:");
+        jLabel3.setText("SERVICIO:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 100, 50, 14);
+        jLabel3.setBounds(120, 120, 60, 14);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(70, 130, 56, 20);
+        jComboBox1.setBounds(90, 150, 56, 20);
 
         jLabel4.setText("Nombre:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 130, 41, 14);
+        jLabel4.setBounds(20, 150, 41, 14);
 
         jLabel5.setText("Fecha Inicio:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 170, 70, 14);
+        jLabel5.setBounds(20, 180, 70, 14);
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("Fecha Fin:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 210, 34, 14);
+        jLabel6.setBounds(20, 210, 50, 14);
+        getContentPane().add(jDateChooser1);
+        jDateChooser1.setBounds(90, 180, 110, 20);
+        getContentPane().add(jDateChooser2);
+        jDateChooser2.setBounds(90, 210, 110, 20);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(90, 30, 70, 20);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(90, 60, 90, 20);
+
+        jLabel7.setText("PROMOCION:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(330, 120, 70, 14);
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox3);
+        jComboBox3.setBounds(310, 150, 56, 20);
+
+        jLabel8.setText("Nombre:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(240, 150, 41, 14);
+
+        jLabel9.setText("Fecha Inicio:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(240, 180, 70, 14);
+
+        jLabel10.setText("Fecha Fin:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(240, 210, 50, 14);
+        getContentPane().add(jDateChooser3);
+        jDateChooser3.setBounds(310, 180, 110, 20);
+        getContentPane().add(jDateChooser4);
+        jDateChooser4.setBounds(310, 210, 110, 20);
+
+        jButton1.setText("Ingresar");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(100, 270, 73, 23);
+
+        jButton2.setText("Ingresar");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(340, 270, 73, 23);
+
+        jLabel11.setText("Cantidad:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(20, 240, 50, 14);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(90, 240, 30, 20);
+
+        jLabel12.setText("Cantidad:");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(240, 240, 50, 14);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(310, 240, 30, 20);
+
+        jButton3.setText("ACEPTAR");
+        getContentPane().add(jButton3);
+        jButton3.setBounds(150, 320, 90, 23);
+
+        jButton4.setText("CANCELAR");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(250, 320, 90, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateChooser4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

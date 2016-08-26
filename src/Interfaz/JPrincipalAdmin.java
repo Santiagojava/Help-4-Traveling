@@ -28,108 +28,147 @@ public class JPrincipalAdmin extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
+        jbtnSalir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jmnUsuario = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        jMenu6 = new javax.swing.JMenu();
+        jmnVerInfoProv = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        jmnCliente = new javax.swing.JMenu();
+        jmnVerInfoCli = new javax.swing.JMenuItem();
+        jmnAltaUsu = new javax.swing.JMenu();
+        jmnAltaProv = new javax.swing.JMenuItem();
+        jmnAltaCli = new javax.swing.JMenuItem();
+        jmnCategoria = new javax.swing.JMenu();
+        jmnAltaCategoria = new javax.swing.JMenuItem();
+        jmnServicio = new javax.swing.JMenu();
+        jmnAltaServicio = new javax.swing.JMenuItem();
+        jmnActServicio = new javax.swing.JMenuItem();
+        jmnVerInfoServicio = new javax.swing.JMenuItem();
+        jmnPromocion = new javax.swing.JMenu();
+        jmnAltaPromocion = new javax.swing.JMenuItem();
+        jmnVerInfoPromo = new javax.swing.JMenuItem();
+        jmnReserva = new javax.swing.JMenu();
+        jmnRealizarReserva = new javax.swing.JMenuItem();
+        jActEstReserva = new javax.swing.JMenuItem();
+        jmnCacelarReserva = new javax.swing.JMenuItem();
+        jmnVerInfoReserva = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton14.setText("salir");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        jbtnSalir.setText("salir");
+        jbtnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jbtnSalirActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("USUARIO");
-        jMenu1.add(jSeparator1);
+        jmnUsuario.setText("USUARIO");
+        jmnUsuario.add(jSeparator1);
 
-        jMenu6.setText("Proveedor");
+        jmnVerInfoProv.setText("Proveedor");
 
         jMenuItem10.setText("Ver Info Proveedor");
-        jMenu6.add(jMenuItem10);
+        jmnVerInfoProv.add(jMenuItem10);
 
-        jMenu1.add(jMenu6);
+        jmnUsuario.add(jmnVerInfoProv);
 
-        jMenu7.setText("Cliente");
+        jmnCliente.setText("Cliente");
 
-        jMenuItem2.setText("Ver Info Cliente");
-        jMenu7.add(jMenuItem2);
+        jmnVerInfoCli.setText("Ver Info Cliente");
+        jmnCliente.add(jmnVerInfoCli);
 
-        jMenu1.add(jMenu7);
+        jmnUsuario.add(jmnCliente);
 
-        jMenuItem1.setText("Alta de Usuario");
-        jMenu1.add(jMenuItem1);
+        jmnAltaUsu.setText("Alta de Usuario");
 
-        jMenuBar1.add(jMenu1);
+        jmnAltaProv.setText("Alta de Proveedor");
+        jmnAltaProv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAltaProvActionPerformed(evt);
+            }
+        });
+        jmnAltaUsu.add(jmnAltaProv);
 
-        jMenu2.setText("CATEGORIA");
+        jmnAltaCli.setText("Alta de Cliente");
+        jmnAltaCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAltaCliActionPerformed(evt);
+            }
+        });
+        jmnAltaUsu.add(jmnAltaCli);
 
-        jMenuItem3.setText("Alta de Categoria");
-        jMenu2.add(jMenuItem3);
+        jmnUsuario.add(jmnAltaUsu);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmnUsuario);
 
-        jMenu3.setText("SERVICIO");
+        jmnCategoria.setText("CATEGORIA");
 
-        jMenuItem4.setText("Alta de Servicio");
-        jMenu3.add(jMenuItem4);
+        jmnAltaCategoria.setText("Alta de Categoria");
+        jmnAltaCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAltaCategoriaActionPerformed(evt);
+            }
+        });
+        jmnCategoria.add(jmnAltaCategoria);
 
-        jMenuItem7.setText("Actualizar Servicio");
-        jMenu3.add(jMenuItem7);
+        jMenuBar1.add(jmnCategoria);
 
-        jMenuItem11.setText("Ver Info Servicio");
-        jMenu3.add(jMenuItem11);
+        jmnServicio.setText("SERVICIO");
 
-        jMenuBar1.add(jMenu3);
+        jmnAltaServicio.setText("Alta de Servicio");
+        jmnAltaServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAltaServicioActionPerformed(evt);
+            }
+        });
+        jmnServicio.add(jmnAltaServicio);
 
-        jMenu4.setText("PROMOCION");
+        jmnActServicio.setText("Actualizar Servicio");
+        jmnActServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnActServicioActionPerformed(evt);
+            }
+        });
+        jmnServicio.add(jmnActServicio);
 
-        jMenuItem5.setText("Alta de Promocion");
-        jMenu4.add(jMenuItem5);
+        jmnVerInfoServicio.setText("Ver Info Servicio");
+        jmnServicio.add(jmnVerInfoServicio);
 
-        jMenuItem12.setText("Ver Info Promocion");
-        jMenu4.add(jMenuItem12);
+        jMenuBar1.add(jmnServicio);
 
-        jMenuBar1.add(jMenu4);
+        jmnPromocion.setText("PROMOCION");
 
-        jMenu5.setText("RESERVA");
+        jmnAltaPromocion.setText("Alta de Promocion");
+        jmnAltaPromocion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnAltaPromocionActionPerformed(evt);
+            }
+        });
+        jmnPromocion.add(jmnAltaPromocion);
 
-        jMenuItem6.setText("Realizar Reserva");
-        jMenu5.add(jMenuItem6);
+        jmnVerInfoPromo.setText("Ver Info Promocion");
+        jmnPromocion.add(jmnVerInfoPromo);
 
-        jMenuItem8.setText("Actualizar Estado de Reserva");
-        jMenu5.add(jMenuItem8);
+        jMenuBar1.add(jmnPromocion);
 
-        jMenuItem9.setText("Cancelar Reserva");
-        jMenu5.add(jMenuItem9);
+        jmnReserva.setText("RESERVA");
 
-        jMenuItem13.setText("Ver Info Reserva");
-        jMenu5.add(jMenuItem13);
+        jmnRealizarReserva.setText("Realizar Reserva");
+        jmnReserva.add(jmnRealizarReserva);
 
-        jMenuBar1.add(jMenu5);
+        jActEstReserva.setText("Actualizar Estado de Reserva");
+        jmnReserva.add(jActEstReserva);
+
+        jmnCacelarReserva.setText("Cancelar Reserva");
+        jmnReserva.add(jmnCacelarReserva);
+
+        jmnVerInfoReserva.setText("Ver Info Reserva");
+        jmnReserva.add(jmnVerInfoReserva);
+
+        jMenuBar1.add(jmnReserva);
 
         setJMenuBar(jMenuBar1);
 
@@ -139,59 +178,85 @@ public class JPrincipalAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(468, Short.MAX_VALUE)
-                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
-                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(259, Short.MAX_VALUE)
+                .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        
+    private void jbtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSalirActionPerformed
         System.exit(0);
-        
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_jbtnSalirActionPerformed
+
+    private void jmnAltaPromocionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAltaPromocionActionPerformed
+       JAltaPromocion jpromo = new JAltaPromocion();
+       jpromo.setVisible(true);
+    }//GEN-LAST:event_jmnAltaPromocionActionPerformed
+
+    private void jmnAltaServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAltaServicioActionPerformed
+        JAltaServicio jservicio = new JAltaServicio();
+        jservicio.setVisible(true);
+    }//GEN-LAST:event_jmnAltaServicioActionPerformed
+
+    private void jmnActServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnActServicioActionPerformed
+        JActualizarServicio jactserv = new JActualizarServicio();
+        jactserv.setVisible(true);
+    }//GEN-LAST:event_jmnActServicioActionPerformed
+
+    private void jmnAltaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAltaCliActionPerformed
+        JAltaCliente jcli = new JAltaCliente();
+        jcli.setVisible(true);
+    }//GEN-LAST:event_jmnAltaCliActionPerformed
+
+    private void jmnAltaProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAltaProvActionPerformed
+        JAltaProveedor jprov = new JAltaProveedor();
+        jprov.setVisible(true);
+    }//GEN-LAST:event_jmnAltaProvActionPerformed
+
+    private void jmnAltaCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnAltaCategoriaActionPerformed
+        JAltaCategoria jcat = new JAltaCategoria();
+        jcat.setVisible(true);
+    }//GEN-LAST:event_jmnAltaCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        JPrincipalAdmin ventana = new JPrincipalAdmin();
-        ventana.setTitle("Help 4 Traveling");
-        ventana.setVisible(true);
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jActEstReserva;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JButton jbtnSalir;
+    private javax.swing.JMenuItem jmnActServicio;
+    private javax.swing.JMenuItem jmnAltaCategoria;
+    private javax.swing.JMenuItem jmnAltaCli;
+    private javax.swing.JMenuItem jmnAltaPromocion;
+    private javax.swing.JMenuItem jmnAltaProv;
+    private javax.swing.JMenuItem jmnAltaServicio;
+    private javax.swing.JMenu jmnAltaUsu;
+    private javax.swing.JMenuItem jmnCacelarReserva;
+    private javax.swing.JMenu jmnCategoria;
+    private javax.swing.JMenu jmnCliente;
+    private javax.swing.JMenu jmnPromocion;
+    private javax.swing.JMenuItem jmnRealizarReserva;
+    private javax.swing.JMenu jmnReserva;
+    private javax.swing.JMenu jmnServicio;
+    private javax.swing.JMenu jmnUsuario;
+    private javax.swing.JMenuItem jmnVerInfoCli;
+    private javax.swing.JMenuItem jmnVerInfoPromo;
+    private javax.swing.JMenu jmnVerInfoProv;
+    private javax.swing.JMenuItem jmnVerInfoReserva;
+    private javax.swing.JMenuItem jmnVerInfoServicio;
     // End of variables declaration//GEN-END:variables
 }

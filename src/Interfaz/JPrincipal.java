@@ -50,6 +50,11 @@ public class JPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jButton1.setText("ADMINISTRADOR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(120, 40, 120, 23);
 
@@ -62,11 +67,27 @@ public class JPrincipal extends javax.swing.JFrame {
         jButton3.setBounds(120, 120, 120, 23);
 
         jButton4.setText("SALIR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4);
         jButton4.setBounds(120, 160, 120, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      this.setVisible(false);
+      JPrincipalAdmin ventana = new JPrincipalAdmin();
+      ventana.setTitle("Help 4 Traveling");
+      ventana.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,6 +120,7 @@ public class JPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JPrincipal().setVisible(true);
+                
             }
         });
     }

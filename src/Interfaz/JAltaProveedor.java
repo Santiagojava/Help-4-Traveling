@@ -35,40 +35,35 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setTitle("Alta de Proveedor");
         getContentPane().setLayout(null);
         getContentPane().add(jTextField10);
-        jTextField10.setBounds(151, 20, 84, 20);
+        jTextField10.setBounds(151, 20, 110, 20);
 
         jLabel13.setText("Nickname:");
         getContentPane().add(jLabel13);
         jLabel13.setBounds(71, 20, 49, 14);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(151, 50, 84, 20);
+        jTextField2.setBounds(151, 50, 110, 20);
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(71, 50, 41, 14);
         getContentPane().add(jTextField3);
-        jTextField3.setBounds(151, 80, 84, 20);
+        jTextField3.setBounds(151, 80, 110, 20);
 
         jLabel3.setText("Apellido:");
         getContentPane().add(jLabel3);
@@ -78,23 +73,7 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(71, 110, 28, 14);
         getContentPane().add(jTextField4);
-        jTextField4.setBounds(151, 110, 84, 20);
-
-        jLabel9.setText("AÑO");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(241, 150, 22, 14);
-
-        jLabel8.setText("MES");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(181, 150, 20, 14);
-
-        jLabel7.setText("DIA");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(130, 150, 18, 14);
-
-        jLabel5.setText("Fecha de nacimiento:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 150, 102, 14);
+        jTextField4.setBounds(151, 110, 110, 20);
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +81,7 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jTextField8);
-        jTextField8.setBounds(139, 258, 114, 20);
+        jTextField8.setBounds(150, 260, 114, 20);
 
         jLabel10.setText("Empresa:");
         getContentPane().add(jLabel10);
@@ -116,27 +95,15 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel12);
         jLabel12.setBounds(89, 298, 22, 14);
         getContentPane().add(jTextField9);
-        jTextField9.setBounds(139, 298, 114, 20);
+        jTextField9.setBounds(150, 300, 114, 20);
 
         jLabel6.setText("Imagen:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(69, 348, 40, 14);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(123, 180, 40, 20);
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(181, 180, 40, 20);
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(227, 180, 56, 20);
+        jLabel6.setBounds(80, 340, 40, 14);
 
         jButton1.setText("Examinar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(150, 380, 80, 23);
+        jButton1.setBounds(160, 380, 80, 23);
 
         jButton2.setText("ACEPTAR");
         getContentPane().add(jButton2);
@@ -146,7 +113,13 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(160, 440, 85, 23);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(140, 350, 110, 20);
+        jTextField1.setBounds(150, 340, 110, 20);
+
+        jLabel5.setText("Fecha de nacimiento:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(30, 160, 102, 14);
+        getContentPane().add(jDateChooser1);
+        jDateChooser1.setBounds(150, 160, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,9 +133,7 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -172,9 +143,6 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
