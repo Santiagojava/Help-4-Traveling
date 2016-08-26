@@ -48,6 +48,9 @@ public class JActualizarServicio extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
 
         setTitle("Actualizar Servicio");
         getContentPane().setLayout(null);
@@ -124,11 +127,11 @@ public class JActualizarServicio extends javax.swing.JInternalFrame {
         jScrollPane4.setViewportView(jTextArea2);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(90, 310, 160, 60);
+        jScrollPane4.setBounds(30, 330, 160, 60);
 
         jButton2.setText("Examinar");
         getContentPane().add(jButton2);
-        jButton2.setBounds(130, 390, 90, 23);
+        jButton2.setBounds(60, 400, 90, 23);
 
         jButton3.setText("ACEPTAR");
         getContentPane().add(jButton3);
@@ -137,6 +140,12 @@ public class JActualizarServicio extends javax.swing.JInternalFrame {
         jButton4.setText("CANCELAR");
         getContentPane().add(jButton4);
         jButton4.setBounds(470, 410, 85, 23);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(110, 220, 90, 20);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(110, 250, 140, 20);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(110, 280, 140, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,5 +173,8 @@ public class JActualizarServicio extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
