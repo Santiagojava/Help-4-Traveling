@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -21,7 +22,10 @@ public class Usuario implements Serializable {
     private String nombre;
     private String apellido;
     private String email;
-//    private Imagen imagen;
+    @OneToOne
+    private Fecha fechaNac;
+    @OneToOne
+    private Imagen imagen;
 
     public String getNick() {
         return nick;
@@ -54,6 +58,23 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Fecha getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(Fecha fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen imagen) {
+        this.imagen = imagen;
+    }
+    
   
     public Usuario(String nick, String nombre, String apellido, String email) {
         this.nick = nick;

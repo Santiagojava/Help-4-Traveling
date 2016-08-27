@@ -31,14 +31,10 @@ public class Categoria implements Serializable {
     @JoinColumn(name = "nombre")
    private  HashMap <String, Categoria> categorias;
    public Categoria(){}
-   public void setnombre(String nombre){
-        this.nombre = nombre;
-   }
-   public void setcategoria(Categoria categoria){}
+   
   
-   public String getnombre(){
-        return this.nombre;
-   }
+  
+   
     public void altaCategoria(String nombre){
     }
     

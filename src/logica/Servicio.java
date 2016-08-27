@@ -7,6 +7,8 @@ package Logica;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +40,7 @@ public class Servicio implements Serializable {
 @OneToOne
 @JoinColumn(name = "fk_ciudad_d")
     private Ciudad ciudad_d;
-    public void ModificarServicio(Dt_servicio serv){}
+    
     public Dt_servicio VerInfoServicio(){
         Dt_servicio nuevo = new Dt_servicio();
         nuevo.setNombre(this.getNombre());

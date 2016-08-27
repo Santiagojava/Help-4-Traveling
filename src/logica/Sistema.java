@@ -41,7 +41,7 @@ import javax.swing.JOptionPane;
     private HashMap <String,Usuario> usuarios;
     @OneToMany
     @JoinColumn(name = "fk_servicios")
-    private HashMap <Integer,Servicio> servicios;
+    private HashMap <String,Servicio> servicios;
     @OneToMany
     @JoinColumn(name = "fk_promociones")
     private HashMap <String , Promocion> promociones;
@@ -49,19 +49,60 @@ import javax.swing.JOptionPane;
     @JoinColumn(name = "fk_ciudades")
     private HashMap <String , Ciudad> ciudades;
     
+    public void AltaUsuario(Dt_usuario usu){
+        boolean correoOK = false;
+        boolean nickOK = false; 
+        Usuario user;
+        if(!usuarios.containsKey(usu.getNick())){
+            nickOK = true;
+            Iterator it = this.usuarios.entrySet().iterator();
+            while(it.hasNext()){
+                Map.Entry c =(Map.Entry) it.next();
+                Usuario value = (Usuario)c.getValue();
+                if(usu.getEmail().equals(value.getEmail())) {
+                    correoOK = false;
+                    JOptionPane.showInputDialog("El Correo electronico ya existe");
+                }
+                else
+                    correoOK = true;
+            }
+        }
+        else{
+            nickOK = false;
+            JOptionPane.showInputDialog("El Nick ya existe, por favor ingrese otro");
+        }
+        if(correoOK && nickOK && (usu.getNombre()!= null)&& (usu.getApellido()!= null &&(usu.getFechaNac() != null))){
+            if(usu.isProveedor()){
+               user = new Proveedor(usu.getNombreEmp(),usu.getLink(), usu.getNick(), usu.getNombre(), usu.getApellido(),usu.getEmail());
+            }
+            else{
+                user = new Cliente(usu.getNick(), usu.getNombre, usu.getApellido, usu.getEmail());
+            }
+        usuarios.put(user.getNick(), user);
+        JOptionPane.showMessageDialog(null, "El usuario se creo Correctamente"); 
+        }
+        else 
+            JOptionPane.showMessageDialog(null, "Error al crear el Usuario, Verifique los campos obligatorios.");
+    }
+    
     public void ActualizarEstadoReserva(int res,Estado estadoRes){
     this.reservas.get(res).ActualizarEstadoReserva(estadoRes);
     }
     public void AltaPromocion(Dt_promo promo){}
+    
     public Dt_servicio VerInfoServicio(String cat, String ser){
     return categorias.get(cat).verInfoServicio(ser);
     }
+    public Dt_promo VerInfoPromocion(String promo){
+        return(promociones.get(promo).VerInfoPromocion());
+    }
+    
     public void AltaServicio(Dt_servicio serv){
         Servicio ser = new Servicio();
         ser.setNombre(serv.getNombre());
         ser.setCiudad_o(ciudades.get(serv.getCiudad_pais_o().getCiudad()));
-        if(ser.getCiudad_d()== null)
-            JOptionPane.showInputDialog("La Ciudad de Origen espesificada no existe");
+        if(ser.getCiudad_o()== null)
+            JOptionPane.showInputDialog("La Ciudad de Origen no fue ingresada o la misma no es valida");
         ser.setCiudad_d(ciudades.get(serv.getCiudad_pais_d().getCiudad()));
         Proveedor pro = (Proveedor)usuarios.get(serv.getNombre_prov());
         if(pro == null)
@@ -86,7 +127,42 @@ import javax.swing.JOptionPane;
         }
         
     }
-
+    
+    public void ActualizarServicio(Dt_servicio serv){
+    Servicio nuevo = servicios.get(serv.getNombre());
+    Iterator iter = serv.getCategorias().entrySet().iterator();
+        while(iter.hasNext()){
+            Map.Entry c =(Map.Entry) iter.next();
+            Dt_categoria value = (Dt_categoria)c.getValue();
+            if(!nuevo.getCategorias().containsKey(value.getNombre())){
+                nuevo.setCategorias(categorias.get(value.getNombre()));
+            }
+        }
+    Iterator ite = nuevo.getCategorias().entrySet().iterator();
+        while(ite.hasNext()){
+            Map.Entry c =(Map.Entry) ite.next();
+            Categoria value = (Categoria)c.getValue();
+            if(!serv.getCategorias().containsKey(value.getNombre())){
+                nuevo.getCategorias().remove(value.getNombre());
+            }
+            else{
+                if(!nuevo.getCategorias().containsKey(value.getNombre())){
+                    nuevo.getCategorias().get(value.getNombre()).setServicios(nuevo);
+                }
+            }
+        }    
+        nuevo.setCiudad_o(ciudades.get(serv.getCiudad_pais_o().getCiudad()));
+        if(nuevo.getCiudad_o()== null)
+            JOptionPane.showInputDialog("La Ciudad de Origen no fue ingresada o la misma no es valida");
+        nuevo.setCiudad_d(ciudades.get(serv.getCiudad_pais_d().getCiudad()));
+        nuevo.setDescripcion(serv.getDescripcion());
+        nuevo.setImagen(serv.getImagen());
+        nuevo.setPrecio(serv.getPrecio());
+        servicios.remove(nuevo.getNombre());
+        this.setServicios(nuevo);
+    }
+    
+    
     public HashMap<String, Usuario> getUsuarios() {
         return usuarios;
     }
@@ -108,16 +184,16 @@ import javax.swing.JOptionPane;
         return categorias;
     }
 
-    public void setCategorias(HashMap<String, Categoria> categorias) {
-        this.categorias = categorias;
+    public void setCategorias(Categoria categorias) {
+        this.categorias.put(categorias.getNombre(), categorias);
     }
 
     public HashMap<Integer, Reserva> getReservas() {
         return reservas;
     }
 
-    public void setReservas(HashMap<Integer, Reserva> reservas) {
-        this.reservas = reservas;
+    public void setReservas(Reserva reservas) {
+        this.reservas.put(reservas.getCod(), reservas) ;
     }
 
 
@@ -132,19 +208,19 @@ import javax.swing.JOptionPane;
 
     
 
-    public HashMap<Integer, Servicio> getServicios() {
+    public HashMap<String, Servicio> getServicios() {
         return servicios;
     }
 
-    public void setServicios(HashMap<Integer, Servicio> servicios) {
-        this.servicios = servicios;
+    public void setServicios(Servicio servicios) {
+        this.servicios.put(servicios.getNombre(), servicios);
     }
 
     public HashMap<String, Promocion> getPromociones() {
         return promociones;
     }
 
-    public void setPromociones(HashMap<String, Promocion> promociones) {
-        this.promociones = promociones;
+    public void setPromociones(Promocion promociones) {
+        this.promociones.put(promociones.getNombre(), promociones);
     }
 }

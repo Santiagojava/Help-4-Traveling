@@ -55,8 +55,11 @@ public class Dt_promo {
         return servicios;
     }
 
-    public void setServicios(HashMap<String, Dt_servicio> servicios) {
-        this.servicios = servicios;
+    public void setServicios(Dt_servicio servicios) {
+        this.servicios.put(servicios.getNombre(), servicios);
+    }
+
+    public Dt_promo() {
     }
 
     

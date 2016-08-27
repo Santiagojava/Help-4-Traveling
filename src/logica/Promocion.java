@@ -8,12 +8,15 @@ package Logica;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,16 +27,30 @@ public class Promocion implements Serializable {
     @Id
     private String nombre;
     private float descuento;
-    private float precion ;
+    private float precio ;
     @OneToMany
     @JoinColumn(name = "nombre")
     private HashMap <String, Servicio> servicios;
-    public void VerInfoPromocion(){}
-
+    
+    
+    public Dt_promo VerInfoPromocion(){
+    Dt_promo nuevo = new Dt_promo();
+    nuevo.setNombre(this.getNombre());
+    nuevo.setPrecio(this.getPrecio());
+    nuevo.setDescuento(this.getDescuento());
+    Iterator it = this.getServicios().entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry c =(Map.Entry) it.next();
+            Servicio value = (Servicio)c.getValue();
+            nuevo.setServicios(value.VerInfoServicio());
+        }
+    return nuevo;
+    }
+    
     public Promocion(String nombre, float descuento, float precion, HashMap <String, Servicio> servicios) {
         this.nombre = nombre;
         this.descuento = descuento;
-        this.precion = precion;
+        this.precio = precion;
         this.servicios = servicios;
     }
 
@@ -53,12 +70,12 @@ public class Promocion implements Serializable {
         this.descuento = descuento;
     }
 
-    public float getPrecion() {
-        return precion;
+    public float getPrecio() {
+        return precio;
     }
 
-    public void setPrecion(float precion) {
-        this.precion = precion;
+    public void setPrecion(float precio) {
+        this.precio = precio;
     }
 
     public HashMap<String, Servicio> getServicios() {
@@ -73,7 +90,4 @@ public class Promocion implements Serializable {
 
     public Promocion() {
     }
-
-    
-    
 }

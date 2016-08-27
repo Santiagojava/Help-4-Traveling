@@ -31,6 +31,12 @@ public class Proveedor extends Usuario implements Serializable {
         return nombreEmp;
     }
 
+    public Proveedor(String nombreEmp, String link, String nick, String nombre, String apellido, String email) {
+        super(nick, nombre, apellido, email);
+        this.nombreEmp = nombreEmp;
+        this.link = link;
+    }
+
     public void setNombreEmp(String nombreEmp) {
         this.nombreEmp = nombreEmp;
     }
