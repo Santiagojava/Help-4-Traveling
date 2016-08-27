@@ -57,6 +57,7 @@ public class JPrincipalAdmin extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jbtnSalir.setText("salir");
         jbtnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +65,8 @@ public class JPrincipalAdmin extends javax.swing.JFrame {
                 jbtnSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(jbtnSalir);
+        jbtnSalir.setBounds(468, 259, 82, 33);
 
         jmnUsuario.setText("USUARIO");
         jmnUsuario.add(jSeparator1);
@@ -157,12 +160,27 @@ public class JPrincipalAdmin extends javax.swing.JFrame {
         jmnReserva.setText("RESERVA");
 
         jmnRealizarReserva.setText("Realizar Reserva");
+        jmnRealizarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnRealizarReservaActionPerformed(evt);
+            }
+        });
         jmnReserva.add(jmnRealizarReserva);
 
         jActEstReserva.setText("Actualizar Estado de Reserva");
+        jActEstReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jActEstReservaActionPerformed(evt);
+            }
+        });
         jmnReserva.add(jActEstReserva);
 
         jmnCacelarReserva.setText("Cancelar Reserva");
+        jmnCacelarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnCacelarReservaActionPerformed(evt);
+            }
+        });
         jmnReserva.add(jmnCacelarReserva);
 
         jmnVerInfoReserva.setText("Ver Info Reserva");
@@ -171,23 +189,6 @@ public class JPrincipalAdmin extends javax.swing.JFrame {
         jMenuBar1.add(jmnReserva);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(468, Short.MAX_VALUE)
-                .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(259, Short.MAX_VALUE)
-                .addComponent(jbtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -226,10 +227,29 @@ public class JPrincipalAdmin extends javax.swing.JFrame {
         jcat.setVisible(true);
     }//GEN-LAST:event_jmnAltaCategoriaActionPerformed
 
+    private void jmnRealizarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnRealizarReservaActionPerformed
+        JRealizarReserva jrealres = new JRealizarReserva();
+        jrealres.setVisible(true);
+    }//GEN-LAST:event_jmnRealizarReservaActionPerformed
+
+    private void jActEstReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActEstReservaActionPerformed
+        JActualizarEstadoReserva jactualres = new JActualizarEstadoReserva();
+        jactualres.setVisible(true);
+    }//GEN-LAST:event_jActEstReservaActionPerformed
+
+    private void jmnCacelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnCacelarReservaActionPerformed
+        JCancelarReserva jcancres = new JCancelarReserva();
+        jcancres.setVisible(true);
+    }//GEN-LAST:event_jmnCacelarReservaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String args[]) {
+        JPrincipalAdmin ventana = new JPrincipalAdmin();
+        ventana.setTitle("Help 4 Traveling");
+        ventana.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jActEstReserva;

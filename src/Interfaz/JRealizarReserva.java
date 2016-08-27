@@ -5,16 +5,40 @@
  */
 package Interfaz;
 
+import Logica.Cliente;
+import Logica.Promocion;
+import Logica.Reserva;
+import Logica.Servicio;
+import Logica.Sistema;
+import static java.lang.Integer.parseInt;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author PERSONAL
  */
 public class JRealizarReserva extends javax.swing.JInternalFrame {
-
+    HashMap <Integer, Dt_Serv> dt_servicios;
+    HashMap <String, Dt_Promo> dt_promociones;
     /**
      * Creates new form JRealizarReserva
      */
     public JRealizarReserva() {
+        Sistema sis = new Sistema();
+        Map<String, Cliente> cli = sis.getClientes();
+        for (String key : cli.keySet()) {
+            jcbxClientes.addItem(key);
+        }
+        Map<Integer, Servicio> serv = sis.getServicios();
+        for (Integer key : serv.keySet()) {
+            jcbxServicios.addItem(key.toString());
+        }
+        Map<String, Promocion> promo = sis.getPromociones();
+        for (String key : promo.keySet()) {
+            jcbxPromociones.addItem(key);
+        }
         initComponents();
     }
 
@@ -30,29 +54,29 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbxServicios = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jFechaIniServ = new com.toedter.calendar.JDateChooser();
+        jFechaFinServ = new com.toedter.calendar.JDateChooser();
+        jtxtPrecio = new javax.swing.JTextField();
+        jcbxClientes = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jcbxPromociones = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jFechaIniPromo = new com.toedter.calendar.JDateChooser();
+        jFechaFinPromo = new com.toedter.calendar.JDateChooser();
+        jbtnIngresarServ = new javax.swing.JButton();
+        jbtnIngresarPromo = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtxtCantidadServ = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jtxtCantidadPromo = new javax.swing.JTextField();
+        jbtnAceptar = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
 
         setTitle("Realizar Reserva");
         getContentPane().setLayout(null);
@@ -69,9 +93,9 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(120, 120, 60, 14);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(90, 150, 56, 20);
+        jcbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcbxServicios);
+        jcbxServicios.setBounds(90, 150, 56, 20);
 
         jLabel4.setText("Nombre:");
         getContentPane().add(jLabel4);
@@ -84,24 +108,24 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         jLabel6.setText("Fecha Fin:");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(20, 210, 50, 14);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(90, 180, 110, 20);
-        getContentPane().add(jDateChooser2);
-        jDateChooser2.setBounds(90, 210, 110, 20);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(90, 30, 70, 20);
+        getContentPane().add(jFechaIniServ);
+        jFechaIniServ.setBounds(90, 180, 110, 20);
+        getContentPane().add(jFechaFinServ);
+        jFechaFinServ.setBounds(90, 210, 110, 20);
+        getContentPane().add(jtxtPrecio);
+        jtxtPrecio.setBounds(90, 30, 70, 20);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(90, 60, 90, 20);
+        jcbxClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcbxClientes);
+        jcbxClientes.setBounds(90, 60, 90, 20);
 
         jLabel7.setText("PROMOCION:");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(330, 120, 70, 14);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3);
-        jComboBox3.setBounds(310, 150, 56, 20);
+        jcbxPromociones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcbxPromociones);
+        jcbxPromociones.setBounds(310, 150, 56, 20);
 
         jLabel8.setText("Nombre:");
         getContentPane().add(jLabel8);
@@ -114,55 +138,90 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         jLabel10.setText("Fecha Fin:");
         getContentPane().add(jLabel10);
         jLabel10.setBounds(240, 210, 50, 14);
-        getContentPane().add(jDateChooser3);
-        jDateChooser3.setBounds(310, 180, 110, 20);
-        getContentPane().add(jDateChooser4);
-        jDateChooser4.setBounds(310, 210, 110, 20);
+        getContentPane().add(jFechaIniPromo);
+        jFechaIniPromo.setBounds(310, 180, 110, 20);
+        getContentPane().add(jFechaFinPromo);
+        jFechaFinPromo.setBounds(310, 210, 110, 20);
 
-        jButton1.setText("Ingresar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(100, 270, 73, 23);
+        jbtnIngresarServ.setText("Ingresar");
+        jbtnIngresarServ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnIngresarServActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnIngresarServ);
+        jbtnIngresarServ.setBounds(100, 270, 73, 23);
 
-        jButton2.setText("Ingresar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(340, 270, 73, 23);
+        jbtnIngresarPromo.setText("Ingresar");
+        jbtnIngresarPromo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnIngresarPromoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnIngresarPromo);
+        jbtnIngresarPromo.setBounds(340, 270, 73, 23);
 
         jLabel11.setText("Cantidad:");
         getContentPane().add(jLabel11);
         jLabel11.setBounds(20, 240, 50, 14);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(90, 240, 30, 20);
+        getContentPane().add(jtxtCantidadServ);
+        jtxtCantidadServ.setBounds(90, 240, 30, 20);
 
         jLabel12.setText("Cantidad:");
         getContentPane().add(jLabel12);
         jLabel12.setBounds(240, 240, 50, 14);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(310, 240, 30, 20);
+        getContentPane().add(jtxtCantidadPromo);
+        jtxtCantidadPromo.setBounds(310, 240, 30, 20);
 
-        jButton3.setText("ACEPTAR");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(150, 320, 90, 23);
+        jbtnAceptar.setText("ACEPTAR");
+        jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnAceptar);
+        jbtnAceptar.setBounds(150, 320, 90, 23);
 
-        jButton4.setText("CANCELAR");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(250, 320, 90, 23);
+        jbtnCancelar.setText("CANCELAR");
+        getContentPane().add(jbtnCancelar);
+        jbtnCancelar.setBounds(250, 320, 90, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
+        Sistema sist = new Sistema();
+        Reserva res = new Reserva();
+        int cod = res.getCod();
+        //Map<Integer, Reserva> map = sist.getReservas();
+        HashMap <Integer,Reserva> reservas;
+        
+    }//GEN-LAST:event_jbtnAceptarActionPerformed
+
+    private void jbtnIngresarServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarServActionPerformed
+        Integer nombre = (Integer) jcbxServicios.getSelectedItem();
+        Date fecha_ini = jFechaIniServ.getDate();
+        Date fecha_fin = jFechaFinServ.getDate();
+        int cantidad = parseInt(jtxtCantidadServ.getText());
+        Dt_Serv serv = new Dt_Serv(nombre,fecha_ini,fecha_fin, cantidad);
+        dt_servicios.put(nombre, serv);
+    }//GEN-LAST:event_jbtnIngresarServActionPerformed
+
+    private void jbtnIngresarPromoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarPromoActionPerformed
+       String nombre = (String) jcbxPromociones.getSelectedItem();
+       Date fecha_ini = jFechaIniPromo.getDate();
+       Date fecha_fin = jFechaFinPromo.getDate();
+       int cantidad = parseInt(jtxtCantidadPromo.getText());
+       Dt_Promo promo = new Dt_Promo(nombre,fecha_ini,fecha_fin, cantidad);
+       dt_promociones.put(nombre, promo);
+    }//GEN-LAST:event_jbtnIngresarPromoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
+    private com.toedter.calendar.JDateChooser jFechaFinPromo;
+    private com.toedter.calendar.JDateChooser jFechaFinServ;
+    private com.toedter.calendar.JDateChooser jFechaIniPromo;
+    private com.toedter.calendar.JDateChooser jFechaIniServ;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -175,8 +234,15 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jbtnAceptar;
+    private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JButton jbtnIngresarPromo;
+    private javax.swing.JButton jbtnIngresarServ;
+    private javax.swing.JComboBox<String> jcbxClientes;
+    private javax.swing.JComboBox<String> jcbxPromociones;
+    private javax.swing.JComboBox<String> jcbxServicios;
+    private javax.swing.JTextField jtxtCantidadPromo;
+    private javax.swing.JTextField jtxtCantidadServ;
+    private javax.swing.JTextField jtxtPrecio;
     // End of variables declaration//GEN-END:variables
 }

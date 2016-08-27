@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Interfaz;
-
+import Logica.Reserva;
+import Logica.Sistema;
+import java.util.Map;
 /**
  *
  * @author PERSONAL
@@ -15,6 +17,13 @@ public class JCancelarReserva extends javax.swing.JInternalFrame {
      * Creates new form JCancelarReserva
      */
     public JCancelarReserva() {
+        Sistema sis = new Sistema();
+        Map<Integer, Reserva> map = sis.getReservas();
+        for (Integer key : map.keySet()) {
+            if(!map.get(key).getEstado().equals("Cancelada")) {
+                jcbxNombre.addItem(key.toString());
+            }
+        }
         initComponents();
     }
 
@@ -28,99 +37,72 @@ public class JCancelarReserva extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jcbxNombre = new javax.swing.JComboBox<>();
+        jbtnAceptar = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
 
         setTitle("Cacelar Reserva");
+        getContentPane().setLayout(null);
 
         jLabel1.setText("Nombre:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 30, 41, 14);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jcbxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbxNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jcbxNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbxNombre);
+        jcbxNombre.setBounds(90, 30, 80, 20);
 
-        jLabel2.setText("Estado:");
-
-        jButton1.setText("ACEPTAR");
-
-        jButton2.setText("CANCELAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbtnAceptar.setText("ACEPTAR");
+        jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbtnAceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbtnAceptar);
+        jbtnAceptar.setBounds(30, 80, 79, 23);
 
-        jLabel3.setText("Cancelada");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(11, 11, 11)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
-                            .addComponent(jLabel1)
-                            .addGap(16, 16, 16)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        jbtnCancelar.setText("CANCELAR");
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnCancelar);
+        jbtnCancelar.setBounds(120, 80, 90, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jcbxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jcbxNombreActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
         this.setVisible(false);
-         this.Exit();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jbtnCancelarActionPerformed
+
+    private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
+        String nombre = (String) jcbxNombre.getSelectedItem();
+        Sistema sist = new Sistema();
+        sist.CancelarReserva(nombre);
+        Map<Integer, Reserva> map = sist.getReservas();
+        for (Integer key : map.keySet()) {
+            if(!map.get(key).getEstado().equals("Cancelada")) {
+                jcbxNombre.addItem(key.toString());
+            }
+        }
+    }//GEN-LAST:event_jbtnAceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jbtnAceptar;
+    private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JComboBox<String> jcbxNombre;
     // End of variables declaration//GEN-END:variables
 }
