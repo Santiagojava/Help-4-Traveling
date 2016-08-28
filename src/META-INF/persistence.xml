@@ -13,6 +13,8 @@
     <class>Logica.Ciudad</class>
     <class>Logica.Pais</class>
     <class>Logica.Imagen</class>
+    <class>logica.Cathija</class>
+    <class>logica.Catpadre</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
       <property name="javax.persistence.jdbc.password" value="lucasgrobadiaz"/>

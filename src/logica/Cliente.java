@@ -41,6 +41,9 @@ public class Cliente extends Usuario implements Serializable {
         super(nick, nombre, apellido, email);
     }
 
+    public Cliente() {
+    }
+
    
     
     public void setReservas(HashMap<Integer, Reserva> reservas) {

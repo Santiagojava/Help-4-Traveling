@@ -25,24 +25,6 @@ import javax.persistence.OneToMany;
 public class Categoria implements Serializable {
 
    @Id private String nombre;
-    @ManyToMany(mappedBy = "categorias")
-   private HashMap <String ,Servicio> servicios;
-    @OneToMany 
-    @JoinColumn(name = "nombre")
-   private  HashMap <String, Categoria> categorias;
-   public Categoria(){}
-   
-  
-  
-   
-    public void altaCategoria(String nombre){
-    }
-    
-    
-    public Dt_servicio verInfoServicio(String nombreserv){
-    return servicios.get(nombreserv).VerInfoServicio();
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -50,25 +32,4 @@ public class Categoria implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public HashMap<String , Servicio> getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(Servicio serv) {
-        this.servicios.put(serv.getNombre(), serv);
-    }
-
-    public HashMap<String, Categoria> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(Categoria cat) {
-        this.categorias.put(cat.getNombre(), cat);
-    }
-    
- 
-   
-   
-    
 }

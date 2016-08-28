@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
     private Long id;
     @OneToMany
     @JoinColumn(name = "fk_categorias")
-    private HashMap <String,Categoria> categorias;
+    private HashMap <String, Catpadre> categorias;
     @OneToMany
     @JoinColumn(name = "fk_reservas")
     private  HashMap <Integer,Reserva> reservas;
@@ -98,6 +98,7 @@ import javax.swing.JOptionPane;
     }
     
     public void AltaServicio(Dt_servicio serv){
+        boolean catOk = false;
         Servicio ser = new Servicio();
         ser.setNombre(serv.getNombre());
         ser.setCiudad_o(ciudades.get(serv.getCiudad_pais_o().getCiudad()));
@@ -115,9 +116,26 @@ import javax.swing.JOptionPane;
         while(it.hasNext()){
             Map.Entry c =(Map.Entry) it.next();
             Dt_categoria value = (Dt_categoria)c.getValue();
-            if(categorias.get(value.getNombre())== null)
-                JOptionPane.showInputDialog("La Categoria especificada no existe");
-            ser.setCategorias(categorias.get(value.getNombre()));
+            if(categorias.get(value.getNombre())== null){
+                Iterator ite = categorias.entrySet().iterator();
+                while(ite.hasNext()){
+                    Map.Entry ca =(Map.Entry) ite.next();
+                    Catpadre val = (Catpadre)ca.getValue();
+                    if(val.getCathijas().get(value.getNombre())== null)
+                          catOk = false;
+                    else{
+                    ser.setCategorias(val.getCathijas().get(value.getNombre()));
+                    catOk= true;
+                    }
+                }
+            }
+            else{
+                ser.setCategorias(categorias.get(value.getNombre()));
+                catOk = true;
+            }
+            if(!catOk)
+                JOptionPane.showInputDialog("La categoria especificada no existe \n"+ value.getNombre()+ "No fue encontrada.");
+            
         }
         Iterator iter = ser.getCategorias().entrySet().iterator();
         while(iter.hasNext()){
@@ -180,11 +198,11 @@ import javax.swing.JOptionPane;
         this.id = id;
     }
 
-    public HashMap<String, Categoria> getCategorias() {
+    public HashMap<String, Catpadre> getCategorias() {
         return categorias;
     }
 
-    public void setCategorias(Categoria categorias) {
+    public void setCategorias(Catpadre categorias) {
         this.categorias.put(categorias.getNombre(), categorias);
     }
 
