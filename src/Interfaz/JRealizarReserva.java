@@ -6,12 +6,17 @@
 package Interfaz;
 
 import Logica.Cliente;
+import Logica.Estado;
+import static Logica.Estado.REGISTRADA;
+import Logica.Fecha;
 import Logica.Promocion;
 import Logica.Reserva;
 import Logica.Servicio;
 import Logica.Sistema;
 import static java.lang.Integer.parseInt;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -193,15 +198,26 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         Sistema sist = new Sistema();
         Reserva res = new Reserva();
         int cod = res.getCod();
-        //Map<Integer, Reserva> map = sist.getReservas();
+        int preciototal = parseInt(jtxtPrecio.getText());
+        String cliente = (String) jcbxClientes.getSelectedItem();
+        Estado estado = REGISTRADA;
+        Calendar c1 = Calendar.getInstance();
+        //Calendar c2 = new GregorianCalendar();
+        int dia = c1.get(Calendar.DATE);
+        int mes = c1.get(Calendar.MONTH)+1;
+        int anio = c1.get(Calendar.YEAR);
+        Fecha fecha_creado = new Fecha(dia,mes,anio);
         HashMap <Integer,Reserva> reservas;
+        sist.RealizarReserva(cod,fecha_creado, preciototal, estado, cliente, dt_servicios, dt_promociones);
         
     }//GEN-LAST:event_jbtnAceptarActionPerformed
 
     private void jbtnIngresarServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarServActionPerformed
         Integer nombre = (Integer) jcbxServicios.getSelectedItem();
-        Date fecha_ini = jFechaIniServ.getDate();
-        Date fecha_fin = jFechaFinServ.getDate();
+        Fecha fecha_ini;
+        fecha_ini = new Fecha(jFechaIniServ.getDate().getDay(),jFechaIniServ.getDate().getMonth(), jFechaIniServ.getDate().getYear());
+        Fecha fecha_fin;
+        fecha_fin = new Fecha(jFechaFinServ.getDate().getDay(),jFechaFinServ.getDate().getMonth(), jFechaFinServ.getDate().getYear());
         int cantidad = parseInt(jtxtCantidadServ.getText());
         Dt_Serv serv = new Dt_Serv(nombre,fecha_ini,fecha_fin, cantidad);
         dt_servicios.put(nombre, serv);
@@ -209,8 +225,10 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
 
     private void jbtnIngresarPromoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarPromoActionPerformed
        String nombre = (String) jcbxPromociones.getSelectedItem();
-       Date fecha_ini = jFechaIniPromo.getDate();
-       Date fecha_fin = jFechaFinPromo.getDate();
+       Fecha fecha_ini;
+       fecha_ini = new Fecha(jFechaIniPromo.getDate().getDay(),jFechaIniPromo.getDate().getMonth(), jFechaIniPromo.getDate().getYear());
+       Fecha fecha_fin;
+       fecha_fin = new Fecha(jFechaFinPromo.getDate().getDay(),jFechaFinPromo.getDate().getMonth(), jFechaFinPromo.getDate().getYear());
        int cantidad = parseInt(jtxtCantidadPromo.getText());
        Dt_Promo promo = new Dt_Promo(nombre,fecha_ini,fecha_fin, cantidad);
        dt_promociones.put(nombre, promo);

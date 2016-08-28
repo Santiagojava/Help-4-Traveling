@@ -20,8 +20,8 @@ public class JCancelarReserva extends javax.swing.JInternalFrame {
         Sistema sis = new Sistema();
         Map<Integer, Reserva> map = sis.getReservas();
         for (Integer key : map.keySet()) {
-            if(!map.get(key).getEstado().equals("Cancelada")) {
-                jcbxNombre.addItem(key.toString());
+            if(!map.get(key).getEstado().equals("CANCELADA")) {
+                jcbxCodigo.addItem(key.toString());
             }
         }
         initComponents();
@@ -37,25 +37,25 @@ public class JCancelarReserva extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jcbxNombre = new javax.swing.JComboBox<>();
+        jcbxCodigo = new javax.swing.JComboBox<>();
         jbtnAceptar = new javax.swing.JButton();
         jbtnCancelar = new javax.swing.JButton();
 
         setTitle("Cacelar Reserva");
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Codigo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 30, 41, 14);
+        jLabel1.setBounds(40, 30, 33, 14);
 
-        jcbxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jcbxNombre.addActionListener(new java.awt.event.ActionListener() {
+        jcbxCodigo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbxCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbxNombreActionPerformed(evt);
+                jcbxCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(jcbxNombre);
-        jcbxNombre.setBounds(90, 30, 80, 20);
+        getContentPane().add(jcbxCodigo);
+        jcbxCodigo.setBounds(90, 30, 80, 20);
 
         jbtnAceptar.setText("ACEPTAR");
         jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -78,22 +78,22 @@ public class JCancelarReserva extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcbxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxNombreActionPerformed
+    private void jcbxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcbxNombreActionPerformed
+    }//GEN-LAST:event_jcbxCodigoActionPerformed
 
     private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jbtnCancelarActionPerformed
 
     private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
-        String nombre = (String) jcbxNombre.getSelectedItem();
+        int codigo = (int) jcbxCodigo.getSelectedItem();
         Sistema sist = new Sistema();
-        sist.CancelarReserva(nombre);
+        sist.CancelarReserva(codigo);
         Map<Integer, Reserva> map = sist.getReservas();
         for (Integer key : map.keySet()) {
-            if(!map.get(key).getEstado().equals("Cancelada")) {
-                jcbxNombre.addItem(key.toString());
+            if(!map.get(key).getEstado().equals("CANCELADA")) {
+                jcbxCodigo.addItem(key.toString());
             }
         }
     }//GEN-LAST:event_jbtnAceptarActionPerformed
@@ -103,6 +103,6 @@ public class JCancelarReserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbtnAceptar;
     private javax.swing.JButton jbtnCancelar;
-    private javax.swing.JComboBox<String> jcbxNombre;
+    private javax.swing.JComboBox<String> jcbxCodigo;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Logica.Estado;
 import Logica.Reserva;
 import Logica.Sistema;
 import java.util.Map;
@@ -22,13 +23,13 @@ public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
         Sistema sis = new Sistema();
         Map<Integer, Reserva> map = sis.getReservas();
         for (Integer key : map.keySet()) {
-            if(map.get(key).getEstado().equals("Registrada")) {
-                jcbxNombre.addItem(key.toString());
+            if(map.get(key).getEstado().equals("REGISTRADA")) {
+                jcbxCodigo.addItem(key.toString());
             }
         }
-        jcbxNombre.addItem("Cancelada");
-        jcbxNombre.addItem("Pagada");
-        jcbxNombre.addItem("Facturada");
+        jcbxCodigo.addItem("CANCELADA");
+        jcbxCodigo.addItem("PAGADA");
+        jcbxCodigo.addItem("FACTURADA");
         initComponents();
     }
 
@@ -42,7 +43,7 @@ public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jcbxNombre = new javax.swing.JComboBox<>();
+        jcbxCodigo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jcbxEstado = new javax.swing.JComboBox<>();
         jbtnAceptar = new javax.swing.JButton();
@@ -51,18 +52,18 @@ public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
         setTitle("Actualizar Estado de Reserva");
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Codigo:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(33, 38, 41, 14);
+        jLabel1.setBounds(33, 38, 37, 14);
 
-        jcbxNombre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jcbxNombre.addActionListener(new java.awt.event.ActionListener() {
+        jcbxCodigo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbxCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbxNombreActionPerformed(evt);
+                jcbxCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(jcbxNombre);
-        jcbxNombre.setBounds(90, 40, 80, 20);
+        getContentPane().add(jcbxCodigo);
+        jcbxCodigo.setBounds(90, 40, 80, 20);
 
         jLabel2.setText("Estado:");
         getContentPane().add(jLabel2);
@@ -89,20 +90,19 @@ public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jcbxNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxNombreActionPerformed
+    private void jcbxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbxCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcbxNombreActionPerformed
+    }//GEN-LAST:event_jcbxCodigoActionPerformed
 
     private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
-     String nombre = (String) jcbxNombre.getSelectedItem();
-     String estado = (String) jcbxEstado.getSelectedItem();
+     int codigo = (int) jcbxCodigo.getSelectedItem();
+     Estado estado = (Estado) jcbxEstado.getSelectedItem();
      Sistema sist = new Sistema();
-     sist.ActualizarEstadoReserva(nombre,estado);
+     sist.ActualizarEstadoReserva(codigo,estado);
      Map<Integer, Reserva> map = sist.getReservas();
-     int a = 5;
      for (Integer key : map.keySet()) {
-        if(map.get(key).getEstado().equals("Registrada")) {
-            jcbxNombre.addItem(key.toString());
+        if(map.get(key).getEstado().equals("REGISTRADA")) {
+            jcbxCodigo.addItem(key.toString());
         }
      }
     }//GEN-LAST:event_jbtnAceptarActionPerformed
@@ -113,7 +113,7 @@ public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbtnAceptar;
     private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JComboBox<String> jcbxCodigo;
     private javax.swing.JComboBox<String> jcbxEstado;
-    private javax.swing.JComboBox<String> jcbxNombre;
     // End of variables declaration//GEN-END:variables
 }

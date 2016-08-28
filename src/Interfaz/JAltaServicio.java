@@ -5,6 +5,11 @@
  */
 package Interfaz;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author PERSONAL
@@ -75,6 +80,11 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
         jLabel3.setBounds(30, 180, 51, 14);
 
         jButton1.setText("Examinar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(20, 210, 77, 23);
 
@@ -135,6 +145,21 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser selectorArchivo = new JFileChooser();
+        selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        selectorArchivo.setMultiSelectionEnabled(true);
+        FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG & PNG","jpg","png");
+        selectorArchivo.setFileFilter(filtroImagen);
+        int returnselection = selectorArchivo.showOpenDialog(null);
+        if(returnselection == JFileChooser.APPROVE_OPTION){
+            File archivoSeleccionado = selectorArchivo.getSelectedFile();
+            String filename = archivoSeleccionado.getName();
+            String ruta = archivoSeleccionado.getAbsolutePath();
+            JOptionPane.showMessageDialog(this, "Ruta: " + ruta + "\tArchivo: " + filename);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
