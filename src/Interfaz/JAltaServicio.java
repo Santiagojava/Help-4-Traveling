@@ -147,9 +147,9 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser selectorArchivo = new JFileChooser();
+        JFileChooser selectorArchivo = (JFileChooser) evt.getSource();
         selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        selectorArchivo.setMultiSelectionEnabled(true);
+        selectorArchivo.setMultiSelectionEnabled(false);
         FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG & PNG","jpg","png");
         selectorArchivo.setFileFilter(filtroImagen);
         int returnselection = selectorArchivo.showOpenDialog(null);
@@ -159,6 +159,7 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
             String ruta = archivoSeleccionado.getAbsolutePath();
             JOptionPane.showMessageDialog(this, "Ruta: " + ruta + "\tArchivo: " + filename);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

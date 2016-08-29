@@ -25,8 +25,9 @@ import java.util.Map;
  * @author PERSONAL
  */
 public class JRealizarReserva extends javax.swing.JInternalFrame {
-    HashMap <Integer, Dt_Serv> dt_servicios;
+    //HashMap <Integer, Dt_Serv> dt_servicios;
     HashMap <String, Dt_Promo> dt_promociones;
+    Dt_Promo promo;
     /**
      * Creates new form JRealizarReserva
      */
@@ -44,9 +45,12 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         for (String key : promo.keySet()) {
             jcbxPromociones.addItem(key);
         }
+        
         initComponents();
     }
-
+        String nombre_serv_promo;
+        Fecha fecha_ini, fecha_fin;
+        int cantidad;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,13 +65,8 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jcbxServicios = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jFechaIniServ = new com.toedter.calendar.JDateChooser();
-        jFechaFinServ = new com.toedter.calendar.JDateChooser();
         jtxtPrecio = new javax.swing.JTextField();
         jcbxClientes = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
         jcbxPromociones = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -76,8 +75,6 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         jFechaFinPromo = new com.toedter.calendar.JDateChooser();
         jbtnIngresarServ = new javax.swing.JButton();
         jbtnIngresarPromo = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jtxtCantidadServ = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jtxtCantidadPromo = new javax.swing.JTextField();
         jbtnAceptar = new javax.swing.JButton();
@@ -94,29 +91,17 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 60, 50, 14);
 
-        jLabel3.setText("SERVICIO:");
+        jLabel3.setText("Seleccione el Servicio o Promoción");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(120, 120, 60, 14);
+        jLabel3.setBounds(50, 120, 170, 14);
 
         jcbxServicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcbxServicios);
-        jcbxServicios.setBounds(90, 150, 56, 20);
+        jcbxServicios.setBounds(110, 150, 56, 20);
 
-        jLabel4.setText("Nombre:");
+        jLabel4.setText("Servicios:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 150, 41, 14);
-
-        jLabel5.setText("Fecha Inicio:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(20, 180, 70, 14);
-
-        jLabel6.setText("Fecha Fin:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 210, 50, 14);
-        getContentPane().add(jFechaIniServ);
-        jFechaIniServ.setBounds(90, 180, 110, 20);
-        getContentPane().add(jFechaFinServ);
-        jFechaFinServ.setBounds(90, 210, 110, 20);
+        jLabel4.setBounds(20, 150, 46, 14);
         getContentPane().add(jtxtPrecio);
         jtxtPrecio.setBounds(90, 30, 70, 20);
 
@@ -124,59 +109,49 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         getContentPane().add(jcbxClientes);
         jcbxClientes.setBounds(90, 60, 90, 20);
 
-        jLabel7.setText("PROMOCION:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(330, 120, 70, 14);
-
         jcbxPromociones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcbxPromociones);
-        jcbxPromociones.setBounds(310, 150, 56, 20);
+        jcbxPromociones.setBounds(110, 180, 56, 20);
 
-        jLabel8.setText("Nombre:");
+        jLabel8.setText("Promociones:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(240, 150, 41, 14);
+        jLabel8.setBounds(20, 180, 70, 14);
 
         jLabel9.setText("Fecha Inicio:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(240, 180, 70, 14);
+        jLabel9.setBounds(20, 210, 70, 14);
 
         jLabel10.setText("Fecha Fin:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(240, 210, 50, 14);
+        jLabel10.setBounds(20, 240, 50, 14);
         getContentPane().add(jFechaIniPromo);
-        jFechaIniPromo.setBounds(310, 180, 110, 20);
+        jFechaIniPromo.setBounds(110, 210, 110, 20);
         getContentPane().add(jFechaFinPromo);
-        jFechaFinPromo.setBounds(310, 210, 110, 20);
+        jFechaFinPromo.setBounds(110, 240, 110, 20);
 
-        jbtnIngresarServ.setText("Ingresar");
+        jbtnIngresarServ.setText("Ingresar Servicio");
         jbtnIngresarServ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnIngresarServActionPerformed(evt);
             }
         });
         getContentPane().add(jbtnIngresarServ);
-        jbtnIngresarServ.setBounds(100, 270, 73, 23);
+        jbtnIngresarServ.setBounds(3, 310, 113, 30);
 
-        jbtnIngresarPromo.setText("Ingresar");
+        jbtnIngresarPromo.setText("Ingresar Promo");
         jbtnIngresarPromo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnIngresarPromoActionPerformed(evt);
             }
         });
         getContentPane().add(jbtnIngresarPromo);
-        jbtnIngresarPromo.setBounds(340, 270, 73, 23);
-
-        jLabel11.setText("Cantidad:");
-        getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 240, 50, 14);
-        getContentPane().add(jtxtCantidadServ);
-        jtxtCantidadServ.setBounds(90, 240, 30, 20);
+        jbtnIngresarPromo.setBounds(133, 310, 110, 30);
 
         jLabel12.setText("Cantidad:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(240, 240, 50, 14);
+        jLabel12.setBounds(20, 270, 50, 14);
         getContentPane().add(jtxtCantidadPromo);
-        jtxtCantidadPromo.setBounds(310, 240, 30, 20);
+        jtxtCantidadPromo.setBounds(110, 270, 30, 20);
 
         jbtnAceptar.setText("ACEPTAR");
         jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -185,11 +160,11 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbtnAceptar);
-        jbtnAceptar.setBounds(150, 320, 90, 23);
+        jbtnAceptar.setBounds(50, 370, 90, 20);
 
         jbtnCancelar.setText("CANCELAR");
         getContentPane().add(jbtnCancelar);
-        jbtnCancelar.setBounds(250, 320, 90, 23);
+        jbtnCancelar.setBounds(150, 370, 90, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,44 +187,34 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jbtnAceptarActionPerformed
 
-    private void jbtnIngresarServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarServActionPerformed
-        Integer nombre = (Integer) jcbxServicios.getSelectedItem();
-        Fecha fecha_ini;
-        fecha_ini = new Fecha(jFechaIniServ.getDate().getDay(),jFechaIniServ.getDate().getMonth(), jFechaIniServ.getDate().getYear());
-        Fecha fecha_fin;
-        fecha_fin = new Fecha(jFechaFinServ.getDate().getDay(),jFechaFinServ.getDate().getMonth(), jFechaFinServ.getDate().getYear());
-        int cantidad = parseInt(jtxtCantidadServ.getText());
-        Dt_Serv serv = new Dt_Serv(nombre,fecha_ini,fecha_fin, cantidad);
-        dt_servicios.put(nombre, serv);
-    }//GEN-LAST:event_jbtnIngresarServActionPerformed
-
     private void jbtnIngresarPromoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarPromoActionPerformed
-       String nombre = (String) jcbxPromociones.getSelectedItem();
-       Fecha fecha_ini;
+       nombre_serv_promo = (String) jcbxPromociones.getSelectedItem();
        fecha_ini = new Fecha(jFechaIniPromo.getDate().getDay(),jFechaIniPromo.getDate().getMonth(), jFechaIniPromo.getDate().getYear());
-       Fecha fecha_fin;
        fecha_fin = new Fecha(jFechaFinPromo.getDate().getDay(),jFechaFinPromo.getDate().getMonth(), jFechaFinPromo.getDate().getYear());
-       int cantidad = parseInt(jtxtCantidadPromo.getText());
-       Dt_Promo promo = new Dt_Promo(nombre,fecha_ini,fecha_fin, cantidad);
-       dt_promociones.put(nombre, promo);
+       cantidad = parseInt(jtxtCantidadPromo.getText());
+       promo = new Dt_Promo(nombre_serv_promo,fecha_ini,fecha_fin, cantidad);
+       dt_promociones.put(nombre_serv_promo, promo);
     }//GEN-LAST:event_jbtnIngresarPromoActionPerformed
+
+    private void jbtnIngresarServActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIngresarServActionPerformed
+        nombre_serv_promo = (String) jcbxServicios.getSelectedItem();
+       fecha_ini = new Fecha(jFechaIniPromo.getDate().getDay(),jFechaIniPromo.getDate().getMonth(), jFechaIniPromo.getDate().getYear());
+       fecha_fin = new Fecha(jFechaFinPromo.getDate().getDay(),jFechaFinPromo.getDate().getMonth(), jFechaFinPromo.getDate().getYear());
+       cantidad = parseInt(jtxtCantidadPromo.getText());
+       promo = new Dt_Promo(nombre_serv_promo,fecha_ini,fecha_fin, cantidad);
+       dt_promociones.put(nombre_serv_promo, promo);
+    }//GEN-LAST:event_jbtnIngresarServActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser jFechaFinPromo;
-    private com.toedter.calendar.JDateChooser jFechaFinServ;
     private com.toedter.calendar.JDateChooser jFechaIniPromo;
-    private com.toedter.calendar.JDateChooser jFechaIniServ;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton jbtnAceptar;
@@ -260,7 +225,6 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> jcbxPromociones;
     private javax.swing.JComboBox<String> jcbxServicios;
     private javax.swing.JTextField jtxtCantidadPromo;
-    private javax.swing.JTextField jtxtCantidadServ;
     private javax.swing.JTextField jtxtPrecio;
     // End of variables declaration//GEN-END:variables
 }
