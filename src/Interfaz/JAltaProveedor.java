@@ -34,7 +34,7 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jtxtemail = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -72,8 +72,8 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         jLabel4.setText("Email:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(71, 110, 28, 14);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(151, 110, 110, 20);
+        getContentPane().add(jtxtemail);
+        jtxtemail.setBounds(151, 110, 110, 20);
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,8 +147,8 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jtxtemail;
     // End of variables declaration//GEN-END:variables
 }
