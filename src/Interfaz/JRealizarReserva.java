@@ -32,7 +32,7 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
      * Creates new form JRealizarReserva
      */
     public JRealizarReserva() {
-        Sistema sis = new Sistema();
+        Sistema sis = Sistema.getInstance();
         Map<String, Cliente> cli = sis.getClientes();
         for (String key : cli.keySet()) {
             jcbxClientes.addItem(key);
@@ -175,7 +175,6 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         int cod = res.getCod();
         int preciototal = parseInt(jtxtPrecio.getText());
         String cliente = (String) jcbxClientes.getSelectedItem();
-        Estado estado = REGISTRADA;
         Calendar c1 = Calendar.getInstance();
         //Calendar c2 = new GregorianCalendar();
         int dia = c1.get(Calendar.DATE);
@@ -183,7 +182,7 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
         int anio = c1.get(Calendar.YEAR);
         Fecha fecha_creado = new Fecha(dia,mes,anio);
         HashMap <Integer,Reserva> reservas;
-        sist.RealizarReserva(cod,fecha_creado, preciototal, estado, cliente, dt_servicios, dt_promociones);
+        sist.RealizarReserva(cod,fecha_creado, preciototal,cliente, dt_servicios, dt_promociones);
         
     }//GEN-LAST:event_jbtnAceptarActionPerformed
 

@@ -5,7 +5,16 @@
  */
 package Interfaz;
 
+import Logica.Ciudad;
+import Logica.Dt_categoria;
+import Logica.Dt_lugar;
+import Logica.Dt_servicio;
+import Logica.Reserva;
+import Logica.Sistema;
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -15,11 +24,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author PERSONAL
  */
 public class JAltaServicio extends javax.swing.JInternalFrame {
-
+    int arch=0;
+    File[] files;
+    File archivoSeleccionado;
     /**
      * Creates new form JAltaServicio
      */
     public JAltaServicio() {
+        files = new File[3];
         initComponents();
     }
 
@@ -35,25 +47,25 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        jxtdescripcion = new javax.swing.JTextArea();
+        jtxtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbtnExaminar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtxtPrecio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jlstCategorias = new javax.swing.JList<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jcbxProveedor = new javax.swing.JComboBox<>();
+        jbtnAceptar = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jlblSeleccion = new javax.swing.JLabel();
+        jcbxCiudOrigen = new javax.swing.JComboBox<>();
+        jcbxCiudDestino = new javax.swing.JComboBox<>();
 
         setTitle("Alta de Servicio");
         getContentPane().setLayout(null);
@@ -66,55 +78,51 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(30, 70, 58, 14);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jxtdescripcion.setColumns(20);
+        jxtdescripcion.setRows(5);
+        jScrollPane1.setViewportView(jxtdescripcion);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(120, 60, 190, 96);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(120, 30, 111, 20);
+        getContentPane().add(jtxtNombre);
+        jtxtNombre.setBounds(120, 30, 111, 20);
 
         jLabel3.setText("Imagenes:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(30, 180, 51, 14);
 
-        jButton1.setText("Examinar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtnExaminar.setText("Examinar");
+        jbtnExaminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtnExaminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(20, 210, 77, 23);
+        getContentPane().add(jbtnExaminar);
+        jbtnExaminar.setBounds(190, 210, 77, 23);
 
         jLabel4.setText("Precio:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 270, 33, 14);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(120, 270, 112, 20);
+        jLabel4.setBounds(30, 260, 33, 14);
+        getContentPane().add(jtxtPrecio);
+        jtxtPrecio.setBounds(120, 260, 112, 20);
 
         jLabel5.setText("Ciudad Origen:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 300, 72, 14);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(120, 300, 112, 20);
+        jLabel5.setBounds(30, 290, 72, 14);
 
         jLabel6.setText("Ciudad Destino:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 330, 76, 14);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(120, 330, 112, 20);
+        jLabel6.setBounds(30, 320, 76, 14);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jlstCategorias.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList1);
+        jScrollPane2.setViewportView(jlstCategorias);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(350, 60, 80, 225);
+        jScrollPane2.setBounds(350, 60, 80, 310);
 
         jLabel7.setText("Categorias:");
         getContentPane().add(jLabel7);
@@ -122,52 +130,129 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Proveedor:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 360, 54, 14);
+        jLabel8.setBounds(30, 350, 54, 14);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(120, 360, 112, 20);
+        jcbxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcbxProveedor);
+        jcbxProveedor.setBounds(120, 350, 112, 20);
 
-        jButton2.setText("ACEPTAR");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(100, 410, 79, 23);
+        jbtnAceptar.setText("ACEPTAR");
+        jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnAceptar);
+        jbtnAceptar.setBounds(100, 400, 79, 23);
 
-        jButton3.setText("CANCELAR");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(190, 410, 85, 23);
+        jbtnCancelar.setText("CANCELAR");
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnCancelar);
+        jbtnCancelar.setBounds(190, 400, 85, 23);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
+        jLabel9.setText("Seleccione hasta 3 imagenes, una por vez");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(100, 180, 210, 14);
 
-        getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(120, 180, 140, 60);
+        jlblSeleccion.setText("3 imagenes restantes");
+        getContentPane().add(jlblSeleccion);
+        jlblSeleccion.setBounds(70, 210, 110, 14);
+
+        jcbxCiudOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcbxCiudOrigen);
+        jcbxCiudOrigen.setBounds(120, 290, 110, 20);
+
+        jcbxCiudDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcbxCiudDestino);
+        jcbxCiudDestino.setBounds(120, 320, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser selectorArchivo = (JFileChooser) evt.getSource();
+    private void jbtnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExaminarActionPerformed
+        
+        /**if(returnselection == JFileChooser.APPROVE_OPTION){
+            File archivoSeleccionado = selectorArchivo.getSelectedFile();
+            String filename = archivoSeleccionado.getName();
+            String ruta = archivoSeleccionado.getAbsolutePath();
+            JOptionPane.showMessageDialog(this, "Ruta: " + ruta + "\tArchivo: " + filename);
+        }**/
+        if(arch<3){
+        JFileChooser selectorArchivo = new JFileChooser();
         selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
         selectorArchivo.setMultiSelectionEnabled(false);
         FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG & PNG","jpg","png");
         selectorArchivo.setFileFilter(filtroImagen);
         int returnselection = selectorArchivo.showOpenDialog(null);
+        
+        
         if(returnselection == JFileChooser.APPROVE_OPTION){
-            File archivoSeleccionado = selectorArchivo.getSelectedFile();
-            String filename = archivoSeleccionado.getName();
-            String ruta = archivoSeleccionado.getAbsolutePath();
-            JOptionPane.showMessageDialog(this, "Ruta: " + ruta + "\tArchivo: " + filename);
+            //archivoSeleccionado = selectorArchivo.getSelectedFile();
+            files[arch] = selectorArchivo.getSelectedFile();
+            //jLabel3.setText("Ingrese una imagen si lo desea");
+            arch++;
+            if(arch==1){
+                jlblSeleccion.setText("2 imagenes restantes");
+            }
+            if (arch==2){
+                jlblSeleccion.setText("1 imagen restante");
+            }
+            if(arch==3){
+                jlblSeleccion.setText("No se puden ingresar más imagenes");
+                jbtnExaminar.setVisible(false);
+            }
+        }  
+        else{
+            if(returnselection==JFileChooser.CANCEL_OPTION){
+                 JOptionPane.showMessageDialog(this, "Seleccione un Archivo");
+            }
+        }
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtnExaminarActionPerformed
+
+    private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jbtnCancelarActionPerformed
+
+    private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
+        Dt_servicio serv = new Dt_servicio();
+        Dt_lugar lugorig, lugdest;
+        Sistema sis= Sistema.getInstance();
+        Map<String, Ciudad> map = sis.getCiudades();
+        String paisciudorig, ciudorigen = (String) jcbxCiudOrigen.getSelectedItem();
+        String paisciuddest, ciuddestino;
+        if(jcbxCiudDestino.getSelectedItem()!= null){
+            ciuddestino = (String) jcbxCiudDestino.getSelectedItem();
+            for (String key : map.keySet()) {
+            if(map.get(key).equals(jcbxCiudDestino.getSelectedItem())) {
+                paisciuddest =map.get(key).getPais().getNombre();
+                lugdest = new Dt_lugar(ciudorigen, paisciuddest);
+            }
+        }
+        }
+        for (String key : map.keySet()) {
+            if(map.get(key).equals(jcbxCiudOrigen.getSelectedItem())) {
+                paisciudorig =map.get(key).getPais().getNombre();
+                lugorig = new Dt_lugar(ciudorigen, paisciudorig);
+            }
+        }
+        List<String> listacategorias;
+        listacategorias = jlstCategorias.getSelectedValuesList();
+        HashMap <String, Dt_categoria> categorias;
+        Dt_categoria cat = new Dt_categoria();
+        for(int i=0; i< listacategorias.size(); i++) {
+            categorias.put(listacategorias.get(i), value);
+        }
+        
+    }//GEN-LAST:event_jbtnAceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -176,15 +261,19 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton jbtnAceptar;
+    private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JButton jbtnExaminar;
+    private javax.swing.JComboBox<String> jcbxCiudDestino;
+    private javax.swing.JComboBox<String> jcbxCiudOrigen;
+    private javax.swing.JComboBox<String> jcbxProveedor;
+    private javax.swing.JLabel jlblSeleccion;
+    private javax.swing.JList<String> jlstCategorias;
+    private javax.swing.JTextField jtxtNombre;
+    private javax.swing.JTextField jtxtPrecio;
+    private javax.swing.JTextArea jxtdescripcion;
     // End of variables declaration//GEN-END:variables
 }
