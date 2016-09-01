@@ -5,16 +5,26 @@
  */
 package Interfaz;
 
+import Logica.Fecha;
+import Logica.Sistema;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author PERSONAL
  */
 public class JAltaCliente extends javax.swing.JInternalFrame {
-
+    Sistema sis;
+    Dt_usuario usu;
+    File imagen_arch;
     /**
      * Creates new form JAltaCliente
      */
     public JAltaCliente() {
+        sis = Sistema.getInstance();
         initComponents();
     }
 
@@ -27,114 +37,146 @@ public class JAltaCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jtxtnickname = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jtxtnombre = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jtxtapellido = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jtxtemail = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jbtnExaminar = new javax.swing.JButton();
+        jbtnAceptar = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
+        jtxtimagen = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jdateFecha_nac = new com.toedter.calendar.JDateChooser();
 
         setTitle("Alta de Cliente");
         getContentPane().setLayout(null);
+        getContentPane().add(jtxtnickname);
+        jtxtnickname.setBounds(130, 30, 110, 20);
 
-        jButton1.setText("Examinar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(200, 360, 90, 23);
+        jLabel14.setText("Nickname:");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(50, 30, 49, 14);
+        getContentPane().add(jtxtnombre);
+        jtxtnombre.setBounds(130, 60, 110, 20);
 
-        jLabel6.setText("Imagen:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(140, 360, 40, 14);
+        jLabel7.setText("Nombre:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(50, 60, 41, 14);
+        getContentPane().add(jtxtapellido);
+        jtxtapellido.setBounds(130, 90, 110, 20);
 
-        jButton2.setText("ACEPTAR");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(100, 290, 79, 23);
+        jLabel8.setText("Apellido:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(50, 90, 41, 14);
 
-        jButton3.setText("CANCELAR");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(190, 290, 85, 23);
+        jLabel9.setText("Email:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(50, 130, 28, 14);
+        getContentPane().add(jtxtemail);
+        jtxtemail.setBounds(130, 130, 110, 20);
 
-        jLabel5.setText("Fecha de nacimiento:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 160, 102, 14);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(170, 120, 110, 20);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(170, 90, 110, 20);
+        jLabel16.setText("Imagen:");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(60, 210, 40, 14);
 
-        jLabel3.setText("Apellido:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 90, 41, 14);
-
-        jLabel4.setText("Email:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(90, 120, 28, 14);
-
-        jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(90, 60, 41, 14);
-
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        jbtnExaminar.setText("Examinar");
+        jbtnExaminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                jbtnExaminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField10);
-        jTextField10.setBounds(170, 30, 110, 20);
+        getContentPane().add(jbtnExaminar);
+        jbtnExaminar.setBounds(140, 250, 80, 23);
 
-        jLabel13.setText("Nickname:");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(90, 30, 49, 14);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(170, 60, 110, 20);
+        jbtnAceptar.setText("ACEPTAR");
+        jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnAceptar);
+        jbtnAceptar.setBounds(70, 310, 79, 23);
 
-        jLabel10.setText("Imagen:");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(90, 200, 40, 14);
+        jbtnCancelar.setText("CANCELAR");
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnCancelar);
+        jbtnCancelar.setBounds(160, 310, 85, 23);
+        getContentPane().add(jtxtimagen);
+        jtxtimagen.setBounds(130, 210, 110, 20);
 
-        jButton4.setText("Examinar");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(190, 230, 80, 23);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(170, 200, 110, 20);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(170, 160, 110, 20);
+        jLabel17.setText("Fecha de nacimiento:");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(10, 170, 102, 14);
+        getContentPane().add(jdateFecha_nac);
+        jdateFecha_nac.setBounds(130, 170, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    private void jbtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelarActionPerformed
+       this.setVisible(false);
+    }//GEN-LAST:event_jbtnCancelarActionPerformed
+
+    private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
+        String nick, nombre, apellido, email, imagen,nombre_emp, link_emp;
+        boolean proveedor = false;
+        Fecha fecha_nac = new Fecha(jdateFecha_nac.getDate().getDay(),jdateFecha_nac.getDate().getMonth(), jdateFecha_nac.getDate().getYear());
+        nick = jtxtnickname.getText();
+        nombre = jtxtnombre.getText();
+        apellido = jtxtapellido.getText();
+        email = jtxtemail.getText();
+        nombre_emp = null;
+        link_emp = null;
+        imagen = imagen_arch.getAbsolutePath();
+        usu = new Dt_usuario(nick,nombre,apellido,email,imagen,fecha_nac,nombre_emp,link_emp, proveedor);
+    }//GEN-LAST:event_jbtnAceptarActionPerformed
+
+    private void jbtnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExaminarActionPerformed
+        
+        JFileChooser selectorArchivo = new JFileChooser();
+        selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        selectorArchivo.setMultiSelectionEnabled(false);
+        FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("JPG & PNG","jpg","png");
+        selectorArchivo.setFileFilter(filtroImagen);
+        int returnselection = selectorArchivo.showOpenDialog(null);
+        
+        
+        if(returnselection == JFileChooser.APPROVE_OPTION){
+            imagen_arch = selectorArchivo.getSelectedFile();
+        }  
+        else{
+            if(returnselection==JFileChooser.CANCEL_OPTION){
+                 JOptionPane.showMessageDialog(this, "Seleccione un Archivo");
+            }
+        }
+        
+    }//GEN-LAST:event_jbtnExaminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton jbtnAceptar;
+    private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JButton jbtnExaminar;
+    private com.toedter.calendar.JDateChooser jdateFecha_nac;
+    private javax.swing.JTextField jtxtapellido;
+    private javax.swing.JTextField jtxtemail;
+    private javax.swing.JTextField jtxtimagen;
+    private javax.swing.JTextField jtxtnickname;
+    private javax.swing.JTextField jtxtnombre;
     // End of variables declaration//GEN-END:variables
 }

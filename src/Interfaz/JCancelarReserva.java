@@ -20,7 +20,7 @@ public class JCancelarReserva extends javax.swing.JInternalFrame {
         Sistema sis = new Sistema();
         Map<Integer, Reserva> map = sis.getReservas();
         for (Integer key : map.keySet()) {
-            if(!map.get(key).getEstado().equals("CANCELADA")) {
+            if(map.get(key).getEstado().toString().equals("CANCELADA")) {
                 jcbxCodigo.addItem(key.toString());
             }
         }

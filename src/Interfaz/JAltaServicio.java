@@ -5,16 +5,19 @@
  */
 package Interfaz;
 
+import Logica.Categoria;
 import Logica.Ciudad;
 import Logica.Dt_categoria;
 import Logica.Dt_lugar;
 import Logica.Dt_servicio;
+import Logica.Proveedor;
 import Logica.Reserva;
 import Logica.Sistema;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -31,7 +34,25 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
      * Creates new form JAltaServicio
      */
     public JAltaServicio() {
+        Sistema sis = Sistema.getInstance();
         files = new File[3];
+        Map<String, Ciudad> ciud = sis.getCiudades();
+        for (String key : ciud.keySet()) {
+            jcbxCiudOrigen.addItem(key);
+        }
+        for (String key : ciud.keySet()) {
+            jcbxCiudDestino.addItem(key);
+        }
+        Map<String, Proveedor> prov = sis.getProveedores();
+        for (String key : prov.keySet()) {
+            jcbxProveedor.addItem(key);
+        }
+        Map<String, Categoria> categ = sis.getCategorias();
+        DefaultListModel modelo = new DefaultListModel();
+        for(String key : categ.keySet()){
+            modelo.addElement(key);
+        }
+        jlstCategorias.setModel(modelo);
         initComponents();
     }
 
@@ -174,13 +195,6 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExaminarActionPerformed
-        
-        /**if(returnselection == JFileChooser.APPROVE_OPTION){
-            File archivoSeleccionado = selectorArchivo.getSelectedFile();
-            String filename = archivoSeleccionado.getName();
-            String ruta = archivoSeleccionado.getAbsolutePath();
-            JOptionPane.showMessageDialog(this, "Ruta: " + ruta + "\tArchivo: " + filename);
-        }**/
         if(arch<3){
         JFileChooser selectorArchivo = new JFileChooser();
         selectorArchivo.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -191,9 +205,7 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
         
         
         if(returnselection == JFileChooser.APPROVE_OPTION){
-            //archivoSeleccionado = selectorArchivo.getSelectedFile();
             files[arch] = selectorArchivo.getSelectedFile();
-            //jLabel3.setText("Ingrese una imagen si lo desea");
             arch++;
             if(arch==1){
                 jlblSeleccion.setText("2 imagenes restantes");
@@ -220,35 +232,45 @@ public class JAltaServicio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbtnCancelarActionPerformed
 
     private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
-        Dt_servicio serv = new Dt_servicio();
-        Dt_lugar lugorig, lugdest;
         Sistema sis= Sistema.getInstance();
+        Dt_servicio serv;
+        String nombreserv, descripcion,nombre_prov;
+        float precio;
+        nombreserv = jtxtNombre.getText();
+        descripcion = jxtdescripcion.getText();
+        precio = Float.parseFloat(jtxtPrecio.getText());
+        nombre_prov = (String) jcbxProveedor.getSelectedItem();
+        Dt_lugar lugorig, lugdest;
+        
         Map<String, Ciudad> map = sis.getCiudades();
         String paisciudorig, ciudorigen = (String) jcbxCiudOrigen.getSelectedItem();
         String paisciuddest, ciuddestino;
-        if(jcbxCiudDestino.getSelectedItem()!= null){
-            ciuddestino = (String) jcbxCiudDestino.getSelectedItem();
-            for (String key : map.keySet()) {
-            if(map.get(key).equals(jcbxCiudDestino.getSelectedItem())) {
-                paisciuddest =map.get(key).getPais().getNombre();
-                lugdest = new Dt_lugar(ciudorigen, paisciuddest);
-            }
-        }
-        }
-        for (String key : map.keySet()) {
+        
+        for (String key : map.keySet()) {//Ciudad Origen
             if(map.get(key).equals(jcbxCiudOrigen.getSelectedItem())) {
                 paisciudorig =map.get(key).getPais().getNombre();
                 lugorig = new Dt_lugar(ciudorigen, paisciudorig);
             }
         }
-        List<String> listacategorias;
-        listacategorias = jlstCategorias.getSelectedValuesList();
-        HashMap <String, Dt_categoria> categorias;
-        Dt_categoria cat = new Dt_categoria();
-        for(int i=0; i< listacategorias.size(); i++) {
-            categorias.put(listacategorias.get(i), value);
+        if(jcbxCiudDestino.getSelectedItem()!= null){//Ciudad Destino
+            ciuddestino = (String) jcbxCiudDestino.getSelectedItem();
+            for (String key : map.keySet()) {
+                if(map.get(key).equals(jcbxCiudDestino.getSelectedItem())) {
+                    paisciuddest =map.get(key).getPais().getNombre();
+                    lugdest = new Dt_lugar(ciudorigen, paisciuddest);
+                }
+            }
         }
-        
+        List<String> listacategorias;//Lista de Categorias
+        listacategorias = jlstCategorias.getSelectedValuesList();
+        HashMap <String, Dt_categoria> categorias = new HashMap();
+        Dt_categoria cat;
+        for(int i=0; i< listacategorias.size(); i++) {
+            cat = new Dt_categoria();
+            cat.setNombre(listacategorias.get(i));
+            categorias.put(listacategorias.get(i), cat);
+        }
+        serv = new Dt_servicio(nombreserv,descripcion,precio, lugorig,lugdest, nombre_prov,categorias);
     }//GEN-LAST:event_jbtnAceptarActionPerformed
 
 

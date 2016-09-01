@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Logica.Cliente;
+import Logica.Dt_promo;
 import Logica.Estado;
 import static Logica.Estado.REGISTRADA;
 import Logica.Fecha;
@@ -26,8 +27,8 @@ import java.util.Map;
  */
 public class JRealizarReserva extends javax.swing.JInternalFrame {
     //HashMap <Integer, Dt_Serv> dt_servicios;
-    HashMap <String, Dt_Promo> dt_promociones;
-    Dt_Promo promo;
+    HashMap <String, Dt_promo> dt_promociones;
+    Dt_promo promo;
     /**
      * Creates new form JRealizarReserva
      */
@@ -191,7 +192,7 @@ public class JRealizarReserva extends javax.swing.JInternalFrame {
        fecha_ini = new Fecha(jFechaIniPromo.getDate().getDay(),jFechaIniPromo.getDate().getMonth(), jFechaIniPromo.getDate().getYear());
        fecha_fin = new Fecha(jFechaFinPromo.getDate().getDay(),jFechaFinPromo.getDate().getMonth(), jFechaFinPromo.getDate().getYear());
        cantidad = parseInt(jtxtCantidadPromo.getText());
-       promo = new Dt_Promo(nombre_serv_promo,fecha_ini,fecha_fin, cantidad);
+       promo = new Dt_promo(nombre_serv_promo,fecha_ini,fecha_fin, cantidad);
        dt_promociones.put(nombre_serv_promo, promo);
     }//GEN-LAST:event_jbtnIngresarPromoActionPerformed
 

@@ -8,6 +8,7 @@ package Interfaz;
 import Logica.Estado;
 import Logica.Reserva;
 import Logica.Sistema;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -15,15 +16,16 @@ import java.util.Map;
  * @author PERSONAL
  */
 public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
-
+Sistema sis;
+Map<Integer, Reserva> map;
     /**
      * Creates new form JActualizarEstadoReserva
      */
     public JActualizarEstadoReserva() {
-        Sistema sis = new Sistema();
-        Map<Integer, Reserva> map = sis.getReservas();
+        sis = Sistema.getInstance();
+        map = sis.getReservas();
         for (Integer key : map.keySet()) {
-            if(map.get(key).getEstado().equals("REGISTRADA")) {
+            if(map.get(key).getEstado().toString().equals("REGISTRADA")) {
                 jcbxCodigo.addItem(key.toString());
             }
         }
@@ -31,6 +33,16 @@ public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
         jcbxCodigo.addItem("PAGADA");
         jcbxCodigo.addItem("FACTURADA");
         initComponents();
+    }
+    
+    public void llenar_combos(){
+        sis = Sistema.getInstance();
+        map = sis.getReservas();
+    for (Integer key : map.keySet()) {
+        if(map.get(key).getEstado().toString().equals("REGISTRADA")) {
+            jcbxCodigo.addItem(key.toString());
+        }
+    }
     }
 
     /**
@@ -99,12 +111,7 @@ public class JActualizarEstadoReserva extends javax.swing.JInternalFrame {
      Estado estado = (Estado) jcbxEstado.getSelectedItem();
      Sistema sist = new Sistema();
      sist.ActualizarEstadoReserva(codigo,estado);
-     Map<Integer, Reserva> map = sist.getReservas();
-     for (Integer key : map.keySet()) {
-        if(map.get(key).getEstado().equals("REGISTRADA")) {
-            jcbxCodigo.addItem(key.toString());
-        }
-     }
+     llenar_combos();
     }//GEN-LAST:event_jbtnAceptarActionPerformed
 
 

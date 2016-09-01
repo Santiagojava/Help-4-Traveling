@@ -5,16 +5,23 @@
  */
 package Interfaz;
 
+import Logica.Fecha;
+import Logica.Sistema;
+import java.io.File;
+
 /**
  *
  * @author PERSONAL
  */
 public class JAltaProveedor extends javax.swing.JInternalFrame {
-
+    Sistema sis;
+    Dt_usuario usu;
+    File imagen_arch;
     /**
      * Creates new form JAltaProveedor
      */
     public JAltaProveedor() {
+        sis = Sistema.getInstance();
         initComponents();
     }
 
@@ -27,43 +34,43 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField10 = new javax.swing.JTextField();
+        jtxtnickname = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtxtnombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jtxtapellido = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jtxtemail = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        jtxtnom_emp = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jtxtlink_emp = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jbtnExaminar = new javax.swing.JButton();
+        jbtnAceptar = new javax.swing.JButton();
+        jbtnCancelar = new javax.swing.JButton();
+        jtxtimagen = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jdateFecha_nac = new com.toedter.calendar.JDateChooser();
 
         setTitle("Alta de Proveedor");
         getContentPane().setLayout(null);
-        getContentPane().add(jTextField10);
-        jTextField10.setBounds(151, 20, 110, 20);
+        getContentPane().add(jtxtnickname);
+        jtxtnickname.setBounds(151, 20, 110, 20);
 
         jLabel13.setText("Nickname:");
         getContentPane().add(jLabel13);
         jLabel13.setBounds(71, 20, 49, 14);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(151, 50, 110, 20);
+        getContentPane().add(jtxtnombre);
+        jtxtnombre.setBounds(151, 50, 110, 20);
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(71, 50, 41, 14);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(151, 80, 110, 20);
+        getContentPane().add(jtxtapellido);
+        jtxtapellido.setBounds(151, 80, 110, 20);
 
         jLabel3.setText("Apellido:");
         getContentPane().add(jLabel3);
@@ -75,17 +82,17 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         getContentPane().add(jtxtemail);
         jtxtemail.setBounds(151, 110, 110, 20);
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        jtxtnom_emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                jtxtnom_empActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(150, 260, 114, 20);
+        getContentPane().add(jtxtnom_emp);
+        jtxtnom_emp.setBounds(150, 260, 114, 20);
 
         jLabel10.setText("Empresa:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(69, 218, 45, 14);
+        jLabel10.setBounds(60, 220, 45, 14);
 
         jLabel11.setText("Nombre:");
         getContentPane().add(jLabel11);
@@ -94,46 +101,61 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
         jLabel12.setText("Link:");
         getContentPane().add(jLabel12);
         jLabel12.setBounds(89, 298, 22, 14);
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(150, 300, 114, 20);
+        getContentPane().add(jtxtlink_emp);
+        jtxtlink_emp.setBounds(150, 300, 114, 20);
 
         jLabel6.setText("Imagen:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 340, 40, 14);
+        jLabel6.setBounds(60, 340, 40, 14);
 
-        jButton1.setText("Examinar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(160, 380, 80, 23);
+        jbtnExaminar.setText("Examinar");
+        getContentPane().add(jbtnExaminar);
+        jbtnExaminar.setBounds(160, 380, 80, 23);
 
-        jButton2.setText("ACEPTAR");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(70, 440, 79, 23);
+        jbtnAceptar.setText("ACEPTAR");
+        jbtnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnAceptar);
+        jbtnAceptar.setBounds(70, 440, 79, 23);
 
-        jButton3.setText("CANCELAR");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(160, 440, 85, 23);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(150, 340, 110, 20);
+        jbtnCancelar.setText("CANCELAR");
+        getContentPane().add(jbtnCancelar);
+        jbtnCancelar.setBounds(160, 440, 85, 23);
+        getContentPane().add(jtxtimagen);
+        jtxtimagen.setBounds(150, 340, 110, 20);
 
         jLabel5.setText("Fecha de nacimiento:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(30, 160, 102, 14);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(150, 160, 110, 20);
+        getContentPane().add(jdateFecha_nac);
+        jdateFecha_nac.setBounds(150, 160, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void jtxtnom_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtnom_empActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_jtxtnom_empActionPerformed
+
+    private void jbtnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAceptarActionPerformed
+       String nick, nombre, apellido, email, imagen,nombre_emp, link_emp;
+        boolean proveedor = true;
+        Fecha fecha_nac = new Fecha(jdateFecha_nac.getDate().getDay(),jdateFecha_nac.getDate().getMonth(), jdateFecha_nac.getDate().getYear());
+        nick = jtxtnickname.getText();
+        nombre = jtxtnombre.getText();
+        apellido = jtxtapellido.getText();
+        email = jtxtemail.getText();
+        nombre_emp = jtxtnom_emp.getText();
+        link_emp = jtxtlink_emp.getText();
+        imagen = imagen_arch.getAbsolutePath();
+        usu = new Dt_usuario(nick,nombre,apellido,email,imagen,fecha_nac,nombre_emp,link_emp, proveedor);
+    }//GEN-LAST:event_jbtnAceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -143,12 +165,16 @@ public class JAltaProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton jbtnAceptar;
+    private javax.swing.JButton jbtnCancelar;
+    private javax.swing.JButton jbtnExaminar;
+    private com.toedter.calendar.JDateChooser jdateFecha_nac;
+    private javax.swing.JTextField jtxtapellido;
     private javax.swing.JTextField jtxtemail;
+    private javax.swing.JTextField jtxtimagen;
+    private javax.swing.JTextField jtxtlink_emp;
+    private javax.swing.JTextField jtxtnickname;
+    private javax.swing.JTextField jtxtnom_emp;
+    private javax.swing.JTextField jtxtnombre;
     // End of variables declaration//GEN-END:variables
 }
